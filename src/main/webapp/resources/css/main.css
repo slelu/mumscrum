@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+body { 
+  background: url(../images/main_background1.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#login-footer{
+	text-align:right;
+}
+#login-container{
+	margin-top:220px;
+}
+#login-box{
+	margin-top: 70px;
+}
