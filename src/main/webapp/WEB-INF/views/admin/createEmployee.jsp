@@ -31,7 +31,7 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Welcome Filmon <b class="caret"></b></a>
+						data-toggle="dropdown">Welcome to Mum SCrum<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
 							<li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
