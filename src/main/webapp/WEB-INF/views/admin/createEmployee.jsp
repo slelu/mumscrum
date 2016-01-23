@@ -113,7 +113,8 @@
 						<div class="form-group">
 							<label for="roles" class="col-sm-3 control-label">Roles</label>
 							<div class="col-sm-4">
-								<form:checkboxes element="span class='checkbox'" items="${roles}" path="roles" />
+								<%-- <form:checkboxes element="span class='checkbox'" items="${roles}" path="roles" /> --%>
+								 <form:select items="${roles}" itemLabel="roleName" itemValue="roleId" path="rolesIds" multiple="true"/>
 								<form:errors path="roles" cssClass="has-error" />
 							</div>
 						</div>

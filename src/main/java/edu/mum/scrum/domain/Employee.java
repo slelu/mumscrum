@@ -1,5 +1,6 @@
 package edu.mum.scrum.domain;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -22,9 +23,22 @@ public class Employee {
 	private String passwordConfirm;
 	private boolean enabled;
 	
+	@Transient
+	List<Long> rolesIds;
+	
 	@ManyToMany(cascade=CascadeType.ALL)
 	private Set<Role> roles;
 	
+	
+	
+	public List<Long> getRolesIds() {
+		return rolesIds;
+	}
+
+	public void setRolesIds(List<Long> rolesIds) {
+		this.rolesIds = rolesIds;
+	}
+
 	public void addRole(Role role){
 		roles.add(role);
 	}
