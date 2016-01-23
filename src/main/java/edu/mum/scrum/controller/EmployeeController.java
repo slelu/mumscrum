@@ -23,7 +23,6 @@ import edu.mum.scrum.service.RoleService;
 @Controller
 public class EmployeeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 	
 	@Autowired
 	private EmployeeService employeeService;
@@ -34,7 +33,7 @@ public class EmployeeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/createEmployee", method = RequestMethod.GET)
 	public String createEmployee(@ModelAttribute("employee") Employee employee, Model model) {
 		model.addAttribute("roles", roleService.getAllRoles() );
 		return "admin/createEmployee";

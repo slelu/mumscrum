@@ -38,18 +38,18 @@
 			<div class="collapse navbar-collapse navbar-menubuilder"
 				style="margin-right: 50px">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="/">Home</a></li>
-					<li><a href="/products"><span
+					<li><a href="${pageContext.request.contextPath}/">Home</a></li>
+					<li><a href="${pageContext.request.contextPath}/createRelease"><span
 							class="glyphicon glyphicon-plus"></span> New RELEASE</a></li>
-					<li><a href="/products"><span
+					<li><a href="#"><span
 							class="glyphicon glyphicon-align-justify"></span> RELEASES LIST</a></li>
-					<!-- <li><a href="/products"><span
+					<!-- <li><a href="#"><span
 							class="glyphicon glyphicon-plus"></span> NEW SPRINT</a></li>
-					<li><a href="/products"><span
+					<li><a href="#"><span
 							class="glyphicon glyphicon-align-justify"></span> SPRINTS LIST</a></li> -->
-					<li><a href="/products"><span
+					<li><a href="#"><span
 							class="glyphicon glyphicon-plus"></span> NEW USER STORY</a></li>
-					<li><a href="/products"><span
+					<li><a href="#"><span
 							class="glyphicon glyphicon-align-justify"></span> USER STORIES LIST</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -126,13 +126,6 @@
 											path="endDate" value="" />
 									</div>
 								</div>
-								<%-- <div class="form-group">
-					<label class="control-label col-sm-2" for="endDate">End Date :</label>
-					<div class="col-sm-10">
-						<form:input class="form:input-large" id="datepicker2"
-							path="endDate" value="" />
-					</div>
-				</div> --%>
 								<div class="form-group">
 									<div class="col-lg-offset-2 col-lg-10">
 										<input type="submit" id="btnAdd" class="btn btn-primary"

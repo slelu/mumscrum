@@ -19,14 +19,14 @@
 			<div class="collapse navbar-collapse navbar-menubuilder"
 				style="margin-right: 50px">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="/">Home</a></li>
-					<li><a href="/products"><span
+					<li><a href="${pageContext.request.contextPath}/">Home</a></li>
+					<li><a href="${pageContext.request.contextPath}/createEmployee"><span
 							class="glyphicon glyphicon-plus"></span> New Employee</a></li>
-					<li><a href="/products"><span
+					<li><a href="#"><span
 							class="glyphicon glyphicon-menu-hamburger"></span> Employees List</a></li>
-					<li><a href="/products"><span
+					<li><a href="#"><span
 							class="glyphicon glyphicon-plus"></span> New Role</a></li>
-					<li><a href="/products"><span
+					<li><a href="#"><span
 							class="glyphicon glyphicon-menu-hamburger"></span> Roles List</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
