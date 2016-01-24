@@ -1,4 +1,4 @@
-package edu.mum.scrum.repository;
+9package edu.mum.scrum.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
