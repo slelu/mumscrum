@@ -19,19 +19,19 @@
 			<div class="collapse navbar-collapse navbar-menubuilder"
 				style="margin-right: 50px">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="/">Home</a></li>
-					<li><a href="/products"><span
+					<li><a href="${pageContext.request.contextPath}/">Home</a></li>
+					<li><a href="${pageContext.request.contextPath}/createEmployee"><span
 							class="glyphicon glyphicon-plus"></span> New Employee</a></li>
-					<li><a href="/products"><span
+					<li><a href="#"><span
 							class="glyphicon glyphicon-menu-hamburger"></span> Employees List</a></li>
-					<li><a href="/products"><span
+					<li><a href="#"><span
 							class="glyphicon glyphicon-plus"></span> New Role</a></li>
-					<li><a href="/products"><span
+					<li><a href="#"><span
 							class="glyphicon glyphicon-menu-hamburger"></span> Roles List</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Welcome Filmon <b class="caret"></b></a>
+						data-toggle="dropdown">Welcome to Mum SCrum<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
 							<li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>

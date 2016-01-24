@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.mum.scrum.domain.Employee;
 import edu.mum.scrum.service.EmployeeService;
@@ -23,7 +24,6 @@ import edu.mum.scrum.service.RoleService;
 @Controller
 public class EmployeeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 	
 	@Autowired
 	private EmployeeService employeeService;
@@ -34,16 +34,17 @@ public class EmployeeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/createEmployee", method = RequestMethod.GET)
 	public String createEmployee(@ModelAttribute("employee") Employee employee, Model model) {
 		model.addAttribute("roles", roleService.getAllRoles() );
 		return "admin/createEmployee";
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String saveEmployee(@ModelAttribute("employee") Employee employee){
+	@RequestMapping(value = "/createEmployee", method = RequestMethod.POST)
+	public String saveEmployee(@ModelAttribute("employee") Employee employee,RedirectAttributes redirectAttributes){
 		employeeService.saveEmployee(employee);
-		return "home";
+		redirectAttributes.addFlashAttribute("success" ,"New Employee Succesfully Created");
+		return "redirect:/";
 	}
 	
 	

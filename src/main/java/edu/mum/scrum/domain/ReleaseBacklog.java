@@ -4,12 +4,14 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
 public class ReleaseBacklog {
 	@Id
+	@GeneratedValue
 	private long releaseId;
 	private String name;
 	private String description;
