@@ -3,25 +3,20 @@ package edu.mum.scrum.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Sprint {
 	@Id
+	@GeneratedValue
 	private long sprintId;
 	
 	private String sprintName;
 	private int duration;
-	
-	
 	private Date startDate;
-	
-	
 	private Date endDate;
 	
-	
-	
-
 	public String getSprintName() {
 		return sprintName;
 	}
