@@ -1,10 +1,15 @@
 package edu.mum.scrum.domain;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Sprint {
@@ -17,6 +22,18 @@ public class Sprint {
 	private Date startDate;
 	private Date endDate;
 	
+	@OneToMany(mappedBy="sprint",cascade=CascadeType.ALL)
+	private List<UserStory> userStories;
+	
+
+	public List<UserStory> getUserStories() {
+		return userStories;
+	}
+
+	public void setUserStories(List<UserStory> userStories) {
+		this.userStories = userStories;
+	}
+
 	public String getSprintName() {
 		return sprintName;
 	}
