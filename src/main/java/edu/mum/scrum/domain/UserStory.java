@@ -12,13 +12,33 @@ public class UserStory {
 	@Id 
 	private long userStoryId;
 	private String priority;
-	private int initialEstimate;
+	
+	private int devEstimate;
+	private int tesEstimate;
 	/*@OneToMany
 	private List <Employee> assignedTo;*/
 	private Date dueDate;
 	//private ReleaseBacklog release;
 	private String description;
 	
+
+	
+	
+	public int getDevEstimate() {
+		return devEstimate;
+	}
+
+	public void setDevEstimate(int devEstimate) {
+		this.devEstimate = devEstimate;
+	}
+
+	public int getTesEstimate() {
+		return tesEstimate;
+	}
+
+	public void setTesEstimate(int tesEstimate) {
+		this.tesEstimate = tesEstimate;
+	}
 
 	public long getUserStoryId() {
 		return userStoryId;
@@ -34,14 +54,6 @@ public class UserStory {
 
 	public void setPriority(String priority) {
 		this.priority = priority;
-	}
-
-	public int getInitialEstimate() {
-		return initialEstimate;
-	}
-
-	public void setInitialEstimate(int initialEstimate) {
-		this.initialEstimate = initialEstimate;
 	}
 
 	/*public List<Employee> getAssignedTo() {

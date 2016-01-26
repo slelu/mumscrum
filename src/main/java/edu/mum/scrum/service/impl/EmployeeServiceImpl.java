@@ -25,17 +25,40 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	
+	
 	@Override
 	public void saveEmployee(Employee employee) {
 		
 		Set <Role> roles=new HashSet<Role>();
 		
 		for(Long id:employee.getRolesIds()){
-			Role role=roleRepository.getOne(id);
+			Role role=roleRepository.findOne(id);
 			roles.add(role);
 		}
 		employee.setRoles(roles);
 		employeeRepository.save(employee);
+	}
+
+
+	@Override
+	public Employee getEmployee(Long id) {
+		
+		return employeeRepository.findOne(id);
+	}
+
+
+	@Override
+	public void deleteEmployee(Long id) {
+		
+		employeeRepository.delete(id);
+		
+	}
+
+
+	@Override
+	public List<Employee> getAllEmployees() {
+		return employeeRepository.findAll();
 	}
 
 }

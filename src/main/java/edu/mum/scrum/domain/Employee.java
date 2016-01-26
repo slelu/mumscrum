@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,6 +23,9 @@ public class Employee {
 	@Transient
 	private String passwordConfirm;
 	private boolean enabled;
+	
+	@Embedded
+	private Address address;
 	
 	@Transient
 	List<Long> rolesIds;
@@ -109,6 +113,14 @@ public class Employee {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	
 	

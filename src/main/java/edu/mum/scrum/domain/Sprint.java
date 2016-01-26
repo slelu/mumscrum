@@ -22,7 +22,7 @@ public class Sprint {
 	private Date startDate;
 	private Date endDate;
 	
-	@OneToMany(mappedBy="sprint",cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<UserStory> userStories;
 	
 
@@ -32,6 +32,10 @@ public class Sprint {
 
 	public void setUserStories(List<UserStory> userStories) {
 		this.userStories = userStories;
+	}
+	
+	public void addUserStories(UserStory userStory){
+		userStories.add(userStory);
 	}
 
 	public String getSprintName() {

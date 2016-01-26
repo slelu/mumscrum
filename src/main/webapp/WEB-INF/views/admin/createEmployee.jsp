@@ -86,6 +86,58 @@
 								<form:errors path="lastname" cssClass="has-error" />
 							</div>
 						</div>
+								<div class="form-group">
+
+							<label for="street" class="col-sm-3 control-label">Street
+								</label>
+							<div class="col-sm-4">
+								<form:input path="address.street" cssClass="form-control input-sm" />
+								<form:errors path="address.street" cssClass="has-error" />
+							</div>
+						</div>
+						
+								<div class="form-group">
+
+							<label for="zipcode" class="col-sm-3 control-label">Zipcode
+								</label>
+							<div class="col-sm-4">
+								<form:input path="address.zipcode" cssClass="form-control input-sm" />
+								<form:errors path="address.zipcode" cssClass="has-error" />
+							</div>
+						</div>
+						
+								<div class="form-group">
+
+							<label for="city" class="col-sm-3 control-label">city
+							</label>
+							<div class="col-sm-4">
+								<form:input path="address.city" cssClass="form-control input-sm" />
+								<form:errors path="address.city" cssClass="has-error" />
+							</div>
+						</div>
+						
+						
+						<div class="form-group">
+
+							<label for="state" class="col-sm-3 control-label">state</label>
+							<div class="col-sm-4">
+								<form:input path="address.state" cssClass="form-control input-sm" />
+								<form:errors path="address.state" cssClass="has-error" />
+							</div>
+						</div>
+						
+								<div class="form-group">
+
+							<label for="country" class="col-sm-3 control-label">country</label>
+							<div class="col-sm-4">
+								<form:input path="address.country" cssClass="form-control input-sm" />
+								<form:errors path="address.country" cssClass="has-error" />
+							</div>
+						</div>
+						
+						
+						
+						
 						<div class="form-group">
 
 							<label for="username" class="col-sm-3 control-label">Username</label>
