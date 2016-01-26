@@ -21,6 +21,17 @@ public class ReleaseServiceImpl implements ReleaseService{
 		releaseRepository.save(release);
 		
 	}
+
+	@Override
+	public ReleaseBacklog getReleaseById(long releaseId) {
+		return releaseRepository.findOne(releaseId);
+	}
+
+	@Override
+	public int deleteUserStoryById(Long id) {
+		// TODO Auto-generated method stub
+		return releaseRepository.deleteByUserStories_UserStoryId(id);
+	}
 	
 	
 

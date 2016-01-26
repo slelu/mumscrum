@@ -8,5 +8,6 @@ import edu.mum.scrum.domain.ReleaseBacklog;
 @Repository
 public interface ReleaseRepository extends JpaRepository <ReleaseBacklog, Long>{
 
+	public int deleteByUserStories_UserStoryId(Long id);
 }
 

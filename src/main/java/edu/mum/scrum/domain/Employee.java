@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
@@ -23,12 +24,14 @@ public class Employee {
 	private String passwordConfirm;
 	private boolean enabled;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<UserStory> userStories;
+	
 	@Transient
 	List<Long> rolesIds;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	private Set<Role> roles;
-	
 	
 	
 	public List<Long> getRolesIds() {
@@ -110,6 +113,11 @@ public class Employee {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-	
+	 public void addUserStory(UserStory userStory){
+		 this.userStories.add(userStory);
+	 }
+	 public List<UserStory> getUserStory(){
+		 return userStories;
+	 }
 	
 }
