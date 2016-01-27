@@ -1,8 +1,7 @@
 <%@ include file="../layouts/taglib.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 			
-				 <form:form modelAttribute="userStory" class="form-horizontal" method="POST"
-							enctype="utf8">
+				 <form:form method="post" action="${pageContext.request.contextPath}/addCourse?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data" commandName="course" class="form-horizontal" role="form">
 								<div class="form-group">
 									<label class="control-label col-sm-3" for="name">UserStory
 										Name:</label>
@@ -25,7 +24,7 @@
 											value="${userStory.priority}" />
 									</div>
 								</div>
-								<input type="hidden" name=id value="${userStory.userStoryId}"/>
+								<%-- <input type="hidden" name=id value="${userStory.userStoryId}"/> --%>
 								<input type="hidden" name=state value="new"/>
 								
 								<div class="form-group">

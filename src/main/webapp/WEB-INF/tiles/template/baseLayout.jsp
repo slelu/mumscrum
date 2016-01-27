@@ -1,4 +1,4 @@
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%> 
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -92,9 +92,9 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">
+						<h3 class="page-header">
 							<tiles:insertAttribute name="heading" />
-						</h1>
+						</h3>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
@@ -128,3 +128,4 @@
 </body>
 
 </html>
+

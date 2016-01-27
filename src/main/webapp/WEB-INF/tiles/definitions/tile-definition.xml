@@ -30,5 +30,18 @@
 		<put-attribute name="heading" value="New Release" /> 
  		<put-attribute name="body" value="/WEB-INF/views/assignUs.jsp" />
 	</definition>
- 
+	
+ 	<definition name="sample" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="Employees List" />
+ 		<put-attribute name="body" value="/WEB-INF/views/sample.jsp" />
+	</definition>
+	
+	<definition name="userStoryList" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="User Story List" />
+ 		<put-attribute name="body" value="/WEB-INF/views/userStoryList.jsp" />
+	</definition>
+	
+
 </tiles-definitions>

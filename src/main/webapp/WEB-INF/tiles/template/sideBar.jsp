@@ -6,7 +6,7 @@
 						<li><a href="#"><i class="fa fa-user fa-fw"></i> Human
 								Resource Admin<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a href="flot.html"><i class="fa fa-plus fa-fw"></i>
+								<li><a href="${pageContext.request.contextPath}/createEmployee"><i class="fa fa-plus fa-fw"></i>
 										New Employee</a></li>
 								<li><a href="morris.html"><i
 										class="fa fa-list-alt fa-fw"></i> Employees List</a></li>
@@ -48,7 +48,7 @@
 									<ul class="nav nav-third-level">
 										<li><a href="${pageContext.request.contextPath}/createUserStory""><i class="fa fa-plus fa-fw"></i> New
 												User Story</a></li>
-										<li><a href="#"><i class="fa fa-list-alt fa-fw"></i>
+										<li><a href="${pageContext.request.contextPath}/viewUserStory"><i class="fa fa-list-alt fa-fw"></i>
 												User Stories List</a></li>
 									</ul> <!-- /.nav-third-level --></li>
 							</ul> <!-- /.nav-second-level --></li>

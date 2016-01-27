@@ -33,7 +33,7 @@ public class UserStoryController {
 	@RequestMapping(value="/createUserStory", method=RequestMethod.POST)
 	public String saveUserStory(@ModelAttribute("userStory") UserStory userStory ){
 		//userStoryService.saveUserStory(userStory);
-		ReleaseBacklog release =releaseService.getReleaseById(1);
+		ReleaseBacklog release =releaseService.getReleaseById(3);
 		System.out.println(release.getName());
 		release.addUserStory(userStory);
 		releaseService.saveRelease(release);
@@ -60,9 +60,9 @@ public class UserStoryController {
 	@RequestMapping(value = "/viewUserStory", method=RequestMethod.GET)
 	public String viewUserStory(Model model) {
 		
-		model.addAttribute("userStory", userStoryService.getAllUserStories());
+		model.addAttribute("userStories", userStoryService.getAllUserStories());
 		
-		return "redirect:/";
+		return "userStoryList";
 	}
 	
 	@RequestMapping(value="/assignUserStory" ,method=RequestMethod.GET)
