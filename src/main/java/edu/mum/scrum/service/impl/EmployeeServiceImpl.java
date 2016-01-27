@@ -1,6 +1,5 @@
 package edu.mum.scrum.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -39,6 +38,28 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setRoles(roles);
 		employeeRepository.save(employee);
 	}
+	@Override
+	public List<Employee> getAvailableDev() {
+		List<Employee> avaDev = null;
+		List<Employee> developers = employeeRepository.findByRoles_RoleName("developer");
+		 for(Employee empl: developers){
+			 if(empl.getUserStory().size()<3)
+				 avaDev.add(empl);
+		 }
+		 return avaDev;
+		
+	}
+	@Override
+	public List<Employee> getAvailableTesters() {
+		List<Employee> avaTes = null;
+		List<Employee> testers = employeeRepository.findByRoles_RoleName("developer");
+		 for(Employee empl: testers){
+			 if(empl.getUserStory().size()<3)
+				 avaTes.add(empl);
+		 }
+		 return avaTes;
+		
+	}
 
 
 	@Override
@@ -49,7 +70,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 	@Override
-	public void deleteEmployee(Long id) {
+	public void deleteEmployeeById(Long id) {
 		
 		employeeRepository.delete(id);
 		

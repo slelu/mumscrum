@@ -3,7 +3,9 @@ package edu.mum.scrum.domain;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -17,9 +19,9 @@ public class ReleaseBacklog {
 	private String description;
 	private Date startDate ;
 	private Date endDate;
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<UserStory> userStories;
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<Sprint> sprints;
 	
 	
@@ -65,6 +67,12 @@ public class ReleaseBacklog {
 	public void setReleaseId(long releaseId) {
 		this.releaseId = releaseId;
 	}
+	 public void addUserStory(UserStory userStory){
+		 this.userStories.add(userStory);
+	 }
+	 
+	 public void addSprint(Sprint sprint){
+		 this.sprints.add(sprint);
+	 }
 	
-
 }

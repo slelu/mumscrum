@@ -18,9 +18,11 @@ public class Sprint {
 	private long sprintId;
 	
 	private String sprintName;
-	private int duration;
 	private Date startDate;
+	
+	
 	private Date endDate;
+	private int duration;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<UserStory> userStories;

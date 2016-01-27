@@ -1,44 +1,31 @@
 package edu.mum.scrum.domain;
 
-import java.util.Date;
-import java.util.List;
+
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class UserStory {
 	@Id 
+	@GeneratedValue
 	private long userStoryId;
+	private String name;
 	private String priority;
-	
+
 	private int devEstimate;
-	private int tesEstimate;
-	/*@OneToMany
-	private List <Employee> assignedTo;*/
-	private Date dueDate;
-	//private ReleaseBacklog release;
+	private int testEstimate;
+	private String state;
+	
+	@OneToOne
+	private Employee assignedDev;
+	@OneToOne
+	private Employee assignedTes;
+
 	private String description;
 	
-
-	
-	
-	public int getDevEstimate() {
-		return devEstimate;
-	}
-
-	public void setDevEstimate(int devEstimate) {
-		this.devEstimate = devEstimate;
-	}
-
-	public int getTesEstimate() {
-		return tesEstimate;
-	}
-
-	public void setTesEstimate(int tesEstimate) {
-		this.tesEstimate = tesEstimate;
-	}
 
 	public long getUserStoryId() {
 		return userStoryId;
@@ -46,6 +33,31 @@ public class UserStory {
 
 	public void setUserStoryId(long userStoryId) {
 		this.userStoryId = userStoryId;
+	}
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Employee getAssignedDev() {
+		return assignedDev;
+	}
+
+	public void setAssignedDev(Employee assignedDev) {
+		this.assignedDev = assignedDev;
+	}
+
+	public Employee getAssignedTes() {
+		return assignedTes;
+	}
+
+	public void setAssignedTes(Employee assignedTes) {
+		this.assignedTes = assignedTes;
 	}
 
 	public String getPriority() {
@@ -56,29 +68,6 @@ public class UserStory {
 		this.priority = priority;
 	}
 
-	/*public List<Employee> getAssignedTo() {
-		return assignedTo;
-	}
-
-	public void setAssignedTo(List<Employee> assignedTo) {
-		this.assignedTo = assignedTo;
-	}*/
-
-	public Date getDueDate() {
-		return dueDate;
-	}
-
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
-	}
-
-	/*public ReleaseBacklog getRelease() {
-		return release;
-	}
-
-	public void setRelease(ReleaseBacklog release) {
-		this.release = release;
-	}*/
 
 	public String getDescription() {
 		return description;
@@ -86,6 +75,30 @@ public class UserStory {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public int getDevEstimate() {
+		return devEstimate;
+	}
+
+	public void setDevEstimate(int devEstimate) {
+		this.devEstimate = devEstimate;
+	}
+
+	public int getTestEstimate() {
+		return testEstimate;
+	}
+
+	public void setTestEstimate(int testEstimate) {
+		this.testEstimate = testEstimate;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 	

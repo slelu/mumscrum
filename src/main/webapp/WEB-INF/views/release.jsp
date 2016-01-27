@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -102,7 +101,7 @@
 								<div class="form-group">
 									<label class="control-label col-sm-3">Description:</label>
 									<div class="col-sm-4">
-										<sf:textarea class="form-control input-sm" name="description" path="description" cols="50"
+										<form:textarea class="form-control input-sm" name="description" path="description" cols="50"
 											rows="8" value="" />
 									</div>
 								</div>
