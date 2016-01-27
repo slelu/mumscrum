@@ -14,10 +14,10 @@
 	</definition>
 	
 	
- 	<definition name="home" extends="baseLayout">
+ 	<definition name="sample" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
-		<put-attribute name="heading" value="Mum-Scrum -Heading" />
- 		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+		<put-attribute name="heading" value="Employees List" />
+ 		<put-attribute name="body" value="/WEB-INF/views/sample.jsp" />
 	</definition>
 
 </tiles-definitions>
