@@ -5,7 +5,7 @@
 <tiles-definitions>
 	
 	<definition name="baseLayout" template="/WEB-INF/tiles/template/baseLayout.jsp">
-		<put-attribute name="title" value="Sample Title" />
+		<put-attribute name="title" value="Mum-Scrum" />
         <put-attribute name="heading" value="" />
 		<!-- <put-attribute name="tagline" value="" /> -->
  		<put-attribute name="sidebar" value="/WEB-INF/tiles/template/sideBar.jsp" />
@@ -14,10 +14,21 @@
 	</definition>
 	
 	
- 	<definition name="sample" extends="baseLayout">
-		<put-attribute name="title" value="Mum-Scrum" />
-<!-- 		<put-attribute name="heading" value="Mum-Scrum -Heading" /> -->
- 		<put-attribute name="body" value="/WEB-INF/views/sample.jsp" />
+ 	<definition name="userStory" extends="baseLayout">
+		<!-- <put-attribute name="title" value="Mum-Scrum" /> -->
+		 <put-attribute name="heading" value="New UserStory" />  
+ 		<put-attribute name="body" value="/WEB-INF/views/userStory.jsp" />
 	</definition>
-
+	<definition name="release" extends="baseLayout">
+		<!-- <put-attribute name="title" value="Mum-Scrum" /> -->
+	    <put-attribute name="heading" value="New Release" />
+ 		<put-attribute name="body" value="/WEB-INF/views/release.jsp" />
+	</definition>
+	
+	 <definition name="assign" extends="baseLayout">
+		<!-- <put-attribute name="title" value="Mum-Scrum" /> -->
+		<put-attribute name="heading" value="New Release" /> 
+ 		<put-attribute name="body" value="/WEB-INF/views/assignUs.jsp" />
+	</definition>
+ 
 </tiles-definitions>

@@ -10,7 +10,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/")
 	public String home(Model model){
-		return "sample";
+		return "baseLayout";
 	}
 
 }

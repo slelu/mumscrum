@@ -5,26 +5,7 @@
 <title><spring:message code="login.form.title" /></title>
 <head>
 <body>
-	<!-- Internationalization Flags -->
-	<div class="collapse navbar-collapse " style="margin-right: 100px">
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="?language=en"> <img align="right" alt="English"
-					src="resources/images/country/united_states_flag.png"
-					style="margin-right: -20px" title="English">
-			</a></li>
-			<li><a href="?language=zh_CN"> <img align="right"
-					alt="Chinese" src="resources/images/country/china_flag.png"
-					style="margin-right: -20px" title="Chinese">
-			</a></li>
-			<li><a href="?language=sp"> <img align="right" alt="Spanish"
-					src="resources/images/country/spain_flag.png"
-					style="margin-right: -20px" title="Español">
-			</a></li>
-		</ul>
-	</div>
-	
 
-	
 	<div id="login-container" class="container">
 		<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<div class="panel panel-default">
@@ -76,7 +57,6 @@
 	</div>
 
 </body>
-
 
 
 

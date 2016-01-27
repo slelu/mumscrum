@@ -68,8 +68,8 @@ public class UserStoryController {
 	@RequestMapping(value="/assignUserStory" ,method=RequestMethod.GET)
 	public String assignUserStory(UserStory userStory ,Model model){
 		
-		model.addAttribute("developer",employeeService.getAvailableDev());
-		model.addAttribute("tester",employeeService.getAvailableTesters());
+		model.addAttribute("developers",employeeService.getAvailableDev());
+		model.addAttribute("testers",employeeService.getAvailableTesters());
 		
 		return "assignUs";
 		
