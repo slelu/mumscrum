@@ -45,10 +45,10 @@
 	
 
 	
-	<definition name="createSprint" extends="baseLayout">
+	<definition name="sprint" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
 		<put-attribute name="heading" value="Create Sprint" />
- 		<put-attribute name="body" value="/WEB-INF/views/createSprint.jsp" />
+ 		<put-attribute name="body" value="/WEB-INF/views/sprint.jsp" />
 	</definition>
 	
 	<definition name="editSprint" extends="baseLayout">
@@ -63,10 +63,10 @@
  		<put-attribute name="body" value="/WEB-INF/views/sprintList.jsp" />
 	</definition>
 	
-	<definition name="createEmployee" extends="baseLayout">
+	<definition name="employee" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
 		<put-attribute name="heading" value="Create Employee" />
- 		<put-attribute name="body" value="/WEB-INF/views/createEmployee.jsp" />
+ 		<put-attribute name="body" value="/WEB-INF/views/employee.jsp" />
 	</definition>
 	
 	<definition name="editEmployee" extends="baseLayout">

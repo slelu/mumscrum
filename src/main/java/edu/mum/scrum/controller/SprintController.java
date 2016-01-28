@@ -31,14 +31,14 @@ public class SprintController {
 	@RequestMapping(value="/createSprint" ,method=RequestMethod.GET)
 	public String createSprint(@ModelAttribute("sprint") Sprint sprint){
 		
-		return "createSprint";
+		return "sprint";
 		
 	}
 	
 	@RequestMapping(value="/createSprint", method=RequestMethod.POST)
 	public String saveSprint(@ModelAttribute("sprint") Sprint sprint ,RedirectAttributes redirectAttributes){
 		
-		List <Sprint> sprints=sprintService.getAllSprints();
+		/*List <Sprint> sprints=sprintService.getAllSprints();
 		
 		if(sprints.isEmpty()){
 			sprintService.saveSprint(sprint);
@@ -54,8 +54,9 @@ public class SprintController {
 				redirectAttributes.addFlashAttribute("success" ,"Sprint Succesfully Created");
 			}
 		}
-		}
-		return "redirect:/";
+		}*/
+		sprintService.saveSprint(sprint);
+		 return "redirect:/viewSprint";
 	}
 	
 	@RequestMapping(value="/viewSprint", method=RequestMethod.GET)
@@ -64,45 +65,20 @@ public class SprintController {
 		return "sprintList";
 	}
 	
-	@RequestMapping(value = "/editSprint/{id}", method=RequestMethod.GET)
-	public String editSprint(Model model, @PathVariable("id") Long id) {
-		
-		model.addAttribute("sprint", sprintService.getSprintById(id));
-		
-		
-		return "editSprint";
-	}
-	
-	@RequestMapping(value = "/editSprint/{id}", method=RequestMethod.POST)
-	public String updateSprint( Sprint sprint,RedirectAttributes redirectAttributes,@PathVariable Long id) {
-		
-		List <Sprint> sprints=sprintService.getAllSprints();
-		
-		for(Sprint s:sprints){
-			if(s.getSprintName().equals(sprint.getSprintName())){
-				redirectAttributes.addFlashAttribute("success" ,"Sprint with this name already exists!!!");
-			}
-			else{
-				sprintService.saveSprint(sprint);
-				redirectAttributes.addFlashAttribute("success" ,"Sprint Succesfully Edited");
-			}
-		}
-		return "redirect:/";
-	}
-	
-	@RequestMapping(value="/searchSprint",method=RequestMethod.GET)
-	public String searchSprint(@RequestParam("name") String name,Model model){
-		model.addAttribute("sprints",sprintService.searchSprintByName(name) );
-		return "sprintList";
-	}
-	
 	@RequestMapping(value = "/editSprint", method=RequestMethod.GET)
 	public String editUserStory(Sprint sprint ,Model model,@RequestParam("id") Long id) {
 		
 		model.addAttribute("sprint",sprintService.getSprintById(id) );
 		
-		return "createSprint";
+		return "sprint";
 	}
+	
+	/*@RequestMapping(value="/searchSprint",method=RequestMethod.GET)
+	public String searchSprint(@RequestParam("name") String name,Model model){
+		model.addAttribute("sprints",sprintService.searchSprintByName(name) );
+		return "sprintList";
+	}*/
+	
 
 
 }

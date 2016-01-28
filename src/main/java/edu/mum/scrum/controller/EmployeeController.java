@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.mum.scrum.domain.Employee;
 import edu.mum.scrum.domain.Role;
 import edu.mum.scrum.domain.Sprint;
+import edu.mum.scrum.domain.UserStory;
 import edu.mum.scrum.service.EmployeeService;
 import edu.mum.scrum.service.RoleService;
 
@@ -44,54 +45,40 @@ public class EmployeeController {
 	@RequestMapping(value = "/createEmployee", method = RequestMethod.GET)
 	public String createEmployee(@ModelAttribute("employee") Employee employee, Model model) {
 		model.addAttribute("roles", roleService.getAllRoles() );
-		return "admin/createEmployee";
+		return "admin/employee";
 	}
 	
 	@RequestMapping(value = "/createEmployee", method = RequestMethod.POST)
-	public String saveEmployee(@ModelAttribute("employee") Employee employee,RedirectAttributes redirectAttributes){
+	public String saveEmployee(@ModelAttribute("employee") Employee employee){
 		employeeService.saveEmployee(employee);
-		redirectAttributes.addFlashAttribute("success" ,"New Employee Succesfully Created");
-		return "redirect:/";
+	
+		return "redirect:/employeeList";
+	}
+	
+	@RequestMapping(value = "/editEmployee", method=RequestMethod.GET)
+	public String editUserStory(Employee employee ,Model model,@RequestParam("id") Long id) {
+		
+		model.addAttribute("employee", employeeService.getEmployee(id));
+		model.addAttribute("roles", roleService.getAllRoles() );
+		
+		return "admin/employee";
 	}
 	
 	@RequestMapping(value="/employeeList", method=RequestMethod.GET)
 	public String getAllSprint(Model model) {
 		model.addAttribute("employees",employeeService.getAllEmployees());
 		
-		return "employeeList";
-	}
-	
-	@RequestMapping(value = "/editEmployee/{id}", method=RequestMethod.GET)
-	public String editEmployee(Model model, @PathVariable("id") Long id) {
-		
-		
-		model.addAttribute("employee",employeeService.getEmployee(id) );
-		model.addAttribute("roles",roleService.getAllRoles());
-		
-		return "editEmployee";
-	}
-	
-	@RequestMapping(value = "/editEmployee/{id}", method=RequestMethod.POST)
-	public String updateEmployee( Employee employee,RedirectAttributes redirectAttributes,@PathVariable Long id) {
-		
-		    employeeService.updateEmployee(employee);
-			redirectAttributes.addFlashAttribute("success" ,"Employee Succesfully Edited");
-		
-		return "redirect:/";
+		return "admin/employeeList";
 	}
 	
 	@RequestMapping(value = "/deleteEmployee/{id}", method=RequestMethod.GET)
-	public String deleteEmployee(@PathVariable("id") long id,RedirectAttributes redirectAttributes) {
+	public String deleteEmployee(@PathVariable("id") long id) {
 		Employee employee=employeeService.getEmployee(id);
 		System.out.println(employee.getFirstname());
-		employee.setEnabled(false);
-		
+		employee.setEnabled(false);	
 		employeeService.disableEmployee(employee);	
 		
-		System.out.println(employee.isEnabled());
-		
-		redirectAttributes.addFlashAttribute("success" ,"Employee Succesfully Disabled");
-		return "redirect:/";
+		return "redirect:/employeeList";
 	}
 	
 	
