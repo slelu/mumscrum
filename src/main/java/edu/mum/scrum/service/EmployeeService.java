@@ -11,5 +11,7 @@ public interface EmployeeService {
 	List <Employee> getAllEmployees();
 	List<Employee> getAvailableDev();
 	List<Employee> getAvailableTesters();
+	void disableEmployee(Employee employee);
+	void updateEmployee(Employee employee);
 
 }

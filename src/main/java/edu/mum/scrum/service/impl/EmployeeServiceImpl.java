@@ -72,7 +72,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public void deleteEmployeeById(Long id) {
 		
-		employeeRepository.delete(id);
+		employeeRepository.deleteByEmployeeId(id);
 		
 	}
 
@@ -80,6 +80,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public List<Employee> getAllEmployees() {
 		return employeeRepository.findAll();
+	}
+	@Override
+	public void disableEmployee(Employee employee) {
+		
+		employeeRepository.save(employee);
+		
+	}
+	@Override
+	public void updateEmployee(Employee employee) {
+		
+		employeeRepository.save(employee);
 	}
 
 }

@@ -5,7 +5,7 @@
 <tiles-definitions>
 	
 	<definition name="baseLayout" template="/WEB-INF/tiles/template/baseLayout.jsp">
-		<put-attribute name="title" value="Sample Title" />
+		<put-attribute name="title" value="Mum-Scrum" />
         <put-attribute name="heading" value="" />
 		<!-- <put-attribute name="tagline" value="" /> -->
  		<put-attribute name="sidebar" value="/WEB-INF/tiles/template/sideBar.jsp" />
@@ -14,10 +14,72 @@
 	</definition>
 	
 	
+ 	<definition name="userStory" extends="baseLayout">
+		<!-- <put-attribute name="title" value="Mum-Scrum" /> -->
+		 <put-attribute name="heading" value="New UserStory" />  
+ 		<put-attribute name="body" value="/WEB-INF/views/userStory.jsp" />
+	</definition>
+	<definition name="release" extends="baseLayout">
+		<!-- <put-attribute name="title" value="Mum-Scrum" /> -->
+	    <put-attribute name="heading" value="New Release" />
+ 		<put-attribute name="body" value="/WEB-INF/views/release.jsp" />
+	</definition>
+	
+	 <definition name="assign" extends="baseLayout">
+		<!-- <put-attribute name="title" value="Mum-Scrum" /> -->
+		<put-attribute name="heading" value="New Release" /> 
+ 		<put-attribute name="body" value="/WEB-INF/views/assignUs.jsp" />
+	</definition>
+	
  	<definition name="sample" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
 		<put-attribute name="heading" value="Employees List" />
  		<put-attribute name="body" value="/WEB-INF/views/sample.jsp" />
 	</definition>
+	
+	<definition name="userStoryList" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="User Story List" />
+ 		<put-attribute name="body" value="/WEB-INF/views/userStoryList.jsp" />
+	</definition>
+	
+
+	
+	<definition name="createSprint" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="Create Sprint" />
+ 		<put-attribute name="body" value="/WEB-INF/views/createSprint.jsp" />
+	</definition>
+	
+	<!-- <definition name="editSprint" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="Edit Sprint" />
+ 		<put-attribute name="body" value="/WEB-INF/views/editSprint.jsp" />
+	</definition> -->
+	
+	<definition name="sprintList" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="Sprint List" />
+ 		<put-attribute name="body" value="/WEB-INF/views/sprintList.jsp" />
+	</definition>
+	
+	<definition name="createEmployee" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="Create Employee" />
+ 		<put-attribute name="body" value="/WEB-INF/views/createEmployee.jsp" />
+	</definition>
+	
+	<definition name="editEmployee" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="Create Employee" />
+ 		<put-attribute name="body" value="/WEB-INF/views/editEmployee.jsp" />
+	</definition>
+	
+	<definition name="employeeList" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="Employee List" />
+ 		<put-attribute name="body" value="/WEB-INF/views/employeeList.jsp" />
+	</definition>
+	
 
 </tiles-definitions>

@@ -86,6 +86,17 @@
 								<form:errors path="lastname" cssClass="has-error" />
 							</div>
 						</div>
+						
+						<div class="form-group">
+
+							<label for="lastName" class="col-sm-3 control-label">Phone Number</label>
+							<div class="col-sm-4">
+								<form:input path="phoneNumber" cssClass="form-control input-sm" />
+								<form:errors path="phoneNumber" cssClass="has-error" />
+							</div>
+						</div>
+						
+						
 								<div class="form-group">
 
 							<label for="street" class="col-sm-3 control-label">Street
@@ -173,6 +184,7 @@
 						<h2></h2>
 						<div class="form-group">
 							<div class="col-sm-offset-3 col-sm-3">
+							<input type="hidden" name=enabled value="true"/>
 								<input type="submit" value="Save"
 									class="btn btn-default btn-sm-" /> <input type="submit"
 									value="Cancel" class="btn btn-default btn-sm-" />

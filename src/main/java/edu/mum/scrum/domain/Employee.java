@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -21,6 +22,8 @@ public class Employee {
 	private String lastname;
 	private String username;
 	private String password;
+	private String phoneNumber;
+	
 	@Transient
 	private String passwordConfirm;
 	private boolean enabled;
@@ -34,7 +37,7 @@ public class Employee {
 	@Transient
 	List<Long> rolesIds;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
 	private Set<Role> roles;
 	
 	
@@ -133,6 +136,24 @@ public class Employee {
 	 public List<UserStory> getUserStory(){
 		 return userStories;
 	 }
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public List<UserStory> getUserStories() {
+		return userStories;
+	}
+
+	public void setUserStories(List<UserStory> userStories) {
+		this.userStories = userStories;
+	}
+	 
+	 
 
 	
 }
