@@ -5,6 +5,7 @@ package edu.mum.scrum.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -23,6 +24,12 @@ public class UserStory {
 	@OneToOne
 	private Employee assignedTes;
 	private String description;
+	
+	@ManyToOne
+	private ReleaseBacklog release;
+	
+	@ManyToOne
+	private Sprint sprint ;
 	
 
 	public long getUserStoryId() {
@@ -96,6 +103,22 @@ public class UserStory {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public ReleaseBacklog getRelease() {
+		return release;
+	}
+
+	public void setRelease(ReleaseBacklog release) {
+		this.release = release;
+	}
+
+	public Sprint getSprint() {
+		return sprint;
+	}
+
+	public void setSprint(Sprint sprint) {
+		this.sprint = sprint;
 	}
 	
 	

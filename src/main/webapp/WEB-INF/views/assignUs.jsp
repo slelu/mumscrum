@@ -1,24 +1,47 @@
 <%@ include file="../layouts/taglib.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-			
-		
-<div class="form-group">
-			<label class="control-label col-sm-2">Developer:</label>
-				<div class="col-sm-10">
-				<form:select name="developer" path="assignedDev">
-					<c:forEach var="developer" items="${developers}">
-	    				<option>${developer}</option>
-					</c:forEach>
-				</form:select>
+
+
+	<form:form modelAttribute="userStory" class="form-horizontal" method="POST"
+							enctype="utf8">
+		<<%-- form:form method="post"
+			action="${pageContext.request.contextPath}/assignUserStory?${_csrf.parameterName}=${_csrf.token}"
+			enctype="multipart/form-data" commandName="userStory"
+			class="form-horizontal" role="form"> --%>
+			<div class="form-group">
+				<h3 class="boxRate">${userStory.name}</h3>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-3" for="developer">Developer:</label>
+				<div class="col-sm-3">
+					<form:select name="developer" path="">
+					<form:option value="NONE" label="--- Select ---"/>
+						<c:forEach var="developer" items="${developers}">
+							<option>${developer.firstname}</option>
+						</c:forEach>
+					</form:select>
 				</div>
-				<label class="control-label col-sm-2">tester:</label>
-				<div class="col-sm-10">
-				<form:select name="tester" path="assignedTes">
-					<c:forEach var="tester" items="${testers}">
-	    				<option>${tester}</option>
-					</c:forEach>
-				</form:select>
+		</div>
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="tester">tester:</label>
+				<div class="col-sm-3">
+					<form:select name="tester" path="">
+					<form:option value="NONE" label="--- Select ---"/>
+						<c:forEach var="tester" items="${testers}">
+							<option>${tester.firstname}</option>
+						</c:forEach>
+					</form:select>
 				</div>
 			</div>
-	
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10">
+					<input type="submit" id="btnAdd" class="btn btn-primary"
+						value="ASSIGN" />
+				</div>
+			</div>
+
+		</form:form>
+
+
+
 </html>

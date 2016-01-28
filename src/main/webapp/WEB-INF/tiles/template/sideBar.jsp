@@ -46,8 +46,10 @@
 									</ul> <!-- /.nav-third-level --></li>
 								<li><a href="#">User Story <span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
-										<li><a href="${pageContext.request.contextPath}/createUserStory""><i class="fa fa-plus fa-fw"></i> New
+										<li><a href="${pageContext.request.contextPath}/createUserStory"><i class="fa fa-plus fa-fw"></i> New
 												User Story</a></li>
+										<li><a href="${pageContext.request.contextPath}/addToSprint"><i class="fa fa-plus fa-fw"></i> Add
+												To Sprint</a></li>
 										<li><a href="${pageContext.request.contextPath}/viewUserStory"><i class="fa fa-list-alt fa-fw"></i>
 												User Stories List</a></li>
 									</ul> <!-- /.nav-third-level --></li>

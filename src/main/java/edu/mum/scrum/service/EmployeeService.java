@@ -8,5 +8,6 @@ public interface EmployeeService {
 	void saveEmployee(Employee employee);
 	
 	List<Employee> getAvailableDev();
-	List<Employee> getAvailableTesters();
+	List<Employee> getAvailableTesters();	
+	Employee getEmployeeByName(String name);
 }

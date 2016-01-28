@@ -8,11 +8,9 @@
 					<th>Description</th>
 					<th>priority</th>
 					<th>state</th>
-					<th>Developer</th>
-					<th>Tester</th>
 					<th>Development Estimate</th>
-					<th>Test Estimate</th>
-					<th></th>
+					<th>Test Estimate</th>		
+					<th>Sprint</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -23,30 +21,19 @@
 						<td>${userStory.description}</td>
 						<td>${userStory.priority}</td>
 						<td>${userStory.state}</td>
-						<td>${userStory.assignedDev.firstname}</td>
-						<td>${userStory.assignedTes.firstname}</td>
 						<td>${userStory.devEstimate}</td>
-						<td>${userStory.testEstimate}</td>
+						<td>${userStory.testEstimate}</td>	
+						<td> <form:select name="sprint" path="">
+					<form:option value="NONE" label="--- Select ---"/>
+						<c:forEach var="sprint" items="${sprints}">
+							<option>${sprint.name}</option>
+						</c:forEach>
+					</form:select> </td>					
 						<td>
-						<a href ='<spring:url value="/editUserStory?id=${userStory.userStoryId}"/>'>
+						<a href ='<spring:url value="/addToSprint?id=${userStory.userStoryId}"/>'>
 							<button class="btn btn-primary btn-xs">
 								<span class="glyphicon glyphicon-pencil"></span>
-								EDIT
-							</button>
-							</a>
-						</td>
-						<td>
-						<a href ='<spring:url value="/assignUserStory?id=${userStory.userStoryId}"/>'>
-							<button class="btn btn-primary btn-xs">
-								<span class="glyphicon glyphicon-pencil"></span>
-								ASSIGN
-							</button>
-							</a>
-						</td>
-						<td>
-						<a href ='<spring:url value="/deleteUserStory?id=${userStory.userStoryId}"/>'>
-							<button type="button" class="btn btn-danger btn-xs">
-								<span class="glyphicon glyphicon-remove"></span>DELETE
+								ADD
 							</button>
 							</a>
 						</td>

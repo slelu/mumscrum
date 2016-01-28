@@ -30,9 +30,15 @@ public class ReleaseServiceImpl implements ReleaseService{
 	@Override
 	public int deleteUserStoryById(Long id) {
 		// TODO Auto-generated method stub
-		return releaseRepository.deleteByUserStories_UserStoryId(id);
+		return 0;
 	}
-	
+
+	/*@Override
+	public int deleteUserStoryById(Long id) {
+		// TODO Auto-generated method stub
+		return releaseRepository.deleteUserStoriesByUserStoryId(id);
+	}
+	*/
 	
 
 }

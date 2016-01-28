@@ -25,9 +25,9 @@
  		<put-attribute name="body" value="/WEB-INF/views/release.jsp" />
 	</definition>
 	
-	 <definition name="assign" extends="baseLayout">
+	 <definition name="assignUs" extends="baseLayout">
 		<!-- <put-attribute name="title" value="Mum-Scrum" /> -->
-		<put-attribute name="heading" value="New Release" /> 
+		<put-attribute name="heading" value="Assign User Story" /> 
  		<put-attribute name="body" value="/WEB-INF/views/assignUs.jsp" />
 	</definition>
 	

@@ -1,5 +1,6 @@
 package edu.mum.scrum.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,8 +39,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	@Override
 	public List<Employee> getAvailableDev() {
-		List<Employee> avaDev = null;
-		List<Employee> developers = employeeRepository.findByRoles_RoleName("developer");
+		List<Employee> avaDev =new ArrayList<Employee>();
+		List<Employee> developers = employeeRepository.findByRoles_RoleName("Developer");
 		 for(Employee empl: developers){
 			 if(empl.getUserStory().size()<3)
 				 avaDev.add(empl);
@@ -49,14 +50,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	@Override
 	public List<Employee> getAvailableTesters() {
-		List<Employee> avaTes = null;
-		List<Employee> testers = employeeRepository.findByRoles_RoleName("developer");
+	List<Employee> avaTes = new ArrayList<Employee>();
+		List<Employee> testers = employeeRepository.findByRoles_RoleName("Tester");
 		 for(Employee empl: testers){
 			 if(empl.getUserStory().size()<3)
 				 avaTes.add(empl);
 		 }
 		 return avaTes;
 		
+	}
+	@Override
+	public Employee getEmployeeByName(String name) {
+		return employeeRepository.findByFirstname(name);
 	}
 
 }
