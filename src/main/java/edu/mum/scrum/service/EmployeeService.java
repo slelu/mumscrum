@@ -13,5 +13,6 @@ public interface EmployeeService {
 	List<Employee> getAvailableTesters();
 	void disableEmployee(Employee employee);
 	void updateEmployee(Employee employee);
+	Employee getEmployeeByName(String name);
 
 }

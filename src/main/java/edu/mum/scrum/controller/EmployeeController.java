@@ -68,7 +68,7 @@ public class EmployeeController {
 		model.addAttribute("employee",employeeService.getEmployee(id) );
 		model.addAttribute("roles",roleService.getAllRoles());
 		
-		return "admin/editEmployee";
+		return "editEmployee";
 	}
 	
 	@RequestMapping(value = "/editEmployee/{id}", method=RequestMethod.POST)

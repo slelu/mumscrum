@@ -19,9 +19,11 @@ public class ReleaseBacklog {
 	private String description;
 	private Date startDate ;
 	private Date endDate;
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	
+	@OneToMany(mappedBy="release")
 	private List<UserStory> userStories;
-	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	
+	@OneToMany(mappedBy="release")
 	private List<Sprint> sprints;
 	
 	

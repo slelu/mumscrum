@@ -1,17 +1,22 @@
 package edu.mum.scrum.domain;
 
+
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 @Entity
 public class Sprint {
@@ -19,30 +24,12 @@ public class Sprint {
 	@GeneratedValue
 	private long sprintId;
 	
+
 	private String sprintName;
 	
 	@Temporal(TemporalType.DATE)
 	private Date startDate;
 	
-	
-	private Date endDate;
-	private int duration;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<UserStory> userStories;
-	
-
-	public List<UserStory> getUserStories() {
-		return userStories;
-	}
-
-	public void setUserStories(List<UserStory> userStories) {
-		this.userStories = userStories;
-	}
-	
-	public void addUserStories(UserStory userStory){
-		userStories.add(userStory);
-	}
 
 	public String getSprintName() {
 		return sprintName;
@@ -52,13 +39,6 @@ public class Sprint {
 		this.sprintName = sprintName;
 	}
 
-	public int getDuration() {
-		return duration;
-	}
-
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
 
 	public Date getStartDate() {
 		return startDate;
@@ -68,13 +48,12 @@ public class Sprint {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
-		return endDate;
-	}
+	@OneToMany(mappedBy="sprint")
+	private List<UserStory> userStories;
+	
+	@ManyToOne
+	private ReleaseBacklog release;
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
 
 	public long getSprintId() {
 		return sprintId;
@@ -82,6 +61,22 @@ public class Sprint {
 
 	public void setSprintId(long sprintId) {
 		this.sprintId = sprintId;
+	}
+
+	public List<UserStory> getUserStories() {
+		return userStories;
+	}
+
+	public void setUserStories(List<UserStory> userStories) {
+		this.userStories = userStories;
+	}
+
+	public ReleaseBacklog getRelease() {
+		return release;
+	}
+
+	public void setRelease(ReleaseBacklog release) {
+		this.release = release;
 	}
 
 }

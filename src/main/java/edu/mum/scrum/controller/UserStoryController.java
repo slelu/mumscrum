@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.mum.scrum.domain.Employee;
 import edu.mum.scrum.domain.ReleaseBacklog;
 import edu.mum.scrum.domain.UserStory;
 import edu.mum.scrum.service.EmployeeService;
@@ -32,13 +33,12 @@ public class UserStoryController {
 	
 	@RequestMapping(value="/createUserStory", method=RequestMethod.POST)
 	public String saveUserStory(@ModelAttribute("userStory") UserStory userStory ){
-		//userStoryService.saveUserStory(userStory);
-		ReleaseBacklog release =releaseService.getReleaseById(3);
-		System.out.println(release.getName());
-		release.addUserStory(userStory);
-		releaseService.saveRelease(release);
 		
-		return "redirect:/";
+		ReleaseBacklog release =releaseService.getReleaseById(1);
+		userStory.setRelease(release);
+		userStoryService.saveUserStory(userStory);
+			
+		return "redirect:/viewUserStory";
 	}
 	
 	@RequestMapping(value = "/editUserStory", method=RequestMethod.GET)
@@ -52,9 +52,8 @@ public class UserStoryController {
 	@RequestMapping(value = "/deleteUserStory", method=RequestMethod.GET)
 	public String deleteUserStory(UserStory userStory ,Model model,@RequestParam("id") Long id) {
 		
-		//model.addAttribute("userStory", userStoryService.getUserStory(id));
-		releaseService.deleteUserStoryById(id);
-		return "redirect:/";
+		userStoryService.deleteUserStoryById(id);
+		return "redirect:/viewUserStory";
 	}
 	
 	@RequestMapping(value = "/viewUserStory", method=RequestMethod.GET)
@@ -66,13 +65,28 @@ public class UserStoryController {
 	}
 	
 	@RequestMapping(value="/assignUserStory" ,method=RequestMethod.GET)
-	public String assignUserStory(UserStory userStory ,Model model){
+	public String assignUserStory(@ModelAttribute("userStory")UserStory userStory , @RequestParam("id") Long id ,Model model){
 		
+		model.addAttribute("userStory",userStoryService.getUserStoryById(id));
 		model.addAttribute("developers",employeeService.getAvailableDev());
 		model.addAttribute("testers",employeeService.getAvailableTesters());
 		
 		return "assignUs";
 		
 	}
-	
+	@RequestMapping(value="/assignUserStory" ,method=RequestMethod.POST)
+	public String saveAssignUserStory(@RequestParam("id") Long id,@RequestParam("developer") String devName,
+			@RequestParam("tester") String testName,Model model){
+		
+		UserStory userStory = userStoryService.getUserStoryById(id);
+		if (!devName.equals("NONE")){
+		userStory.setAssignedDev(employeeService.getEmployeeByName(devName));
+		}
+		if (!testName.equals("NONE")){
+		userStory.setAssignedTes(employeeService.getEmployeeByName(testName));
+		}
+		userStoryService.saveUserStory(userStory);
+		
+		return "redirect:/viewUserStory";
+	}
 }

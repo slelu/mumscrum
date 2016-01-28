@@ -10,5 +10,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 	
 	public List<Employee> findByRoles_RoleName(String roleName);
 	public int deleteByEmployeeId(Long id);
+	public Employee findByFirstname(String name);
 
 }
