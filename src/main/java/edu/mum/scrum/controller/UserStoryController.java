@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import edu.mum.scrum.domain.Employee;
 import edu.mum.scrum.domain.ReleaseBacklog;
 import edu.mum.scrum.domain.UserStory;
 import edu.mum.scrum.service.EmployeeService;
 import edu.mum.scrum.service.ReleaseService;
+import edu.mum.scrum.service.SprintService;
 import edu.mum.scrum.service.UserStoryService;
 
 @Controller
@@ -23,6 +23,10 @@ public class UserStoryController {
 	ReleaseService releaseService;
 	@Autowired
 	EmployeeService employeeService;
+	@Autowired
+	SprintService sprintService;
+	
+	
 	
 	@RequestMapping(value="/createUserStory" ,method=RequestMethod.GET)
 	public String createUserStory(@ModelAttribute("userStory") UserStory userStory){
@@ -67,7 +71,7 @@ public class UserStoryController {
 	@RequestMapping(value="/assignUserStory" ,method=RequestMethod.GET)
 	public String assignUserStory(@ModelAttribute("userStory")UserStory userStory , @RequestParam("id") Long id ,Model model){
 		
-		model.addAttribute("userStory",userStoryService.getUserStoryById(id));
+		model.addAttribute("userStories",userStoryService.getUserStoryById(id));
 		model.addAttribute("developers",employeeService.getAvailableDev());
 		model.addAttribute("testers",employeeService.getAvailableTesters());
 		
@@ -89,4 +93,27 @@ public class UserStoryController {
 		
 		return "redirect:/viewUserStory";
 	}
+	
+	@RequestMapping(value="/releaseUS" ,method=RequestMethod.GET)
+	public String addToSprint(Model model){
+		
+		model.addAttribute("userStories",userStoryService.getAllUserStoryByReleaseId(1));
+		model.addAttribute("sprints",sprintService.getAllSprints());
+		
+		return "usToSprint";
+		
+	}
+	
+	@RequestMapping(value="/addToSprint" ,method=RequestMethod.POST)
+	public String saveAddToSprint(@RequestParam("id") Long id,@RequestParam("sprint") String sprintName ,Model model){
+		
+		model.addAttribute("userStories",userStoryService.getAllUserStoryByReleaseId(1));
+		model.addAttribute("sprints",sprintService.getAllSprints());
+		
+		return "assignUs";
+		
+	}
+	
+	
+	
 }

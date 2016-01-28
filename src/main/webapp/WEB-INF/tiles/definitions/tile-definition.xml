@@ -43,8 +43,6 @@
  		<put-attribute name="body" value="/WEB-INF/views/userStoryList.jsp" />
 	</definition>
 	
-
-	
 	<definition name="createSprint" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
 		<put-attribute name="heading" value="Create Sprint" />
@@ -79,6 +77,12 @@
 		<put-attribute name="title" value="Mum-Scrum" />
 		<put-attribute name="heading" value="Employee List" />
  		<put-attribute name="body" value="/WEB-INF/views/employeeList.jsp" />
+	</definition>
+	
+	<definition name="usToSprint" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="User Stories in Release" />
+ 		<put-attribute name="body" value="/WEB-INF/views/usToSprint.jsp" />
 	</definition>
 	
 

@@ -4,10 +4,6 @@
 
 	<form:form modelAttribute="userStory" class="form-horizontal" method="POST"
 							enctype="utf8">
-		<<%-- form:form method="post"
-			action="${pageContext.request.contextPath}/assignUserStory?${_csrf.parameterName}=${_csrf.token}"
-			enctype="multipart/form-data" commandName="userStory"
-			class="form-horizontal" role="form"> --%>
 			<div class="form-group">
 				<h3 class="boxRate">${userStory.name}</h3>
 			</div>

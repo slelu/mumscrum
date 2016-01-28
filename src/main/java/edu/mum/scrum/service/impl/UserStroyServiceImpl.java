@@ -41,4 +41,10 @@ public class UserStroyServiceImpl implements UserStoryService{
 		return userStoryRepository.findAll();
 	}
 
+	@Override
+	public List<UserStory> getAllUserStoryByReleaseId(long id) {
+		
+		return userStoryRepository.findByRelease_ReleaseId(id);
+	}
+
 }

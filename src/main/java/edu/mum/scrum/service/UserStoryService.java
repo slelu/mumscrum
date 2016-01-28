@@ -9,6 +9,7 @@ public interface UserStoryService {
 	public UserStory getUserStoryById(Long userstoryId);
 	public int deleteUserStoryById(Long userStoryId);
 	public List<UserStory> getAllUserStories();
+    public List<UserStory> getAllUserStoryByReleaseId(long id);
 	}
 
 

@@ -39,7 +39,7 @@
 									</ul> <!-- /.nav-third-level --></li>
 								<li><a href="#">Sprint <span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
-										<li><a href="#"><i class="fa fa-plus fa-fw"></i> New
+										<li><a href="${pageContext.request.contextPath}/createSprint"><i class="fa fa-plus fa-fw"></i> New
 												Sprint</a></li>
 										<li><a href="#"><i class="fa fa-list-alt fa-fw"></i>
 												Sprints List</a></li>
@@ -48,7 +48,7 @@
 									<ul class="nav nav-third-level">
 										<li><a href="${pageContext.request.contextPath}/createUserStory"><i class="fa fa-plus fa-fw"></i> New
 												User Story</a></li>
-										<li><a href="${pageContext.request.contextPath}/addToSprint"><i class="fa fa-plus fa-fw"></i> Add
+										<li><a href="${pageContext.request.contextPath}/releaseUS"><i class="fa fa-plus fa-fw"></i> Add
 												To Sprint</a></li>
 										<li><a href="${pageContext.request.contextPath}/viewUserStory"><i class="fa fa-list-alt fa-fw"></i>
 												User Stories List</a></li>

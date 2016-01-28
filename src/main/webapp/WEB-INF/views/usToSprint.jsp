@@ -12,7 +12,7 @@
 					<th>Test Estimate</th>		
 					<th>Sprint</th>
 					<th></th>
-					<th></th>
+					
 				</tr>
 				<tbody>
 				<c:forEach var="userStory" items="${userStories}">
@@ -23,12 +23,13 @@
 						<td>${userStory.state}</td>
 						<td>${userStory.devEstimate}</td>
 						<td>${userStory.testEstimate}</td>	
-						<td> <form:select name="sprint" path="">
-					<form:option value="NONE" label="--- Select ---"/>
+						<td> 
+						<select name="sprint">
+					<option value="NONE" label="--- Select ---"/>
 						<c:forEach var="sprint" items="${sprints}">
-							<option>${sprint.name}</option>
+							<option>${sprint.sprintName}</option>
 						</c:forEach>
-					</form:select> </td>					
+					</select> </td>					
 						<td>
 						<a href ='<spring:url value="/addToSprint?id=${userStory.userStoryId}"/>'>
 							<button class="btn btn-primary btn-xs">
