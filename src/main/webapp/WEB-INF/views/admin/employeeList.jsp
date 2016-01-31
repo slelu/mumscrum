@@ -1,4 +1,4 @@
-<%@ include file="../layouts/taglib.jsp"%>
+<%@ include file="../../layouts/taglib.jsp"%>
 <div class="row">
 	<div class="col-md-12">
 		<div class="table-responsive">
@@ -7,9 +7,8 @@
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Phone Number </th>	
-					<!-- <th> </th>
 					<th> </th>
-					<th> </th> -->
+					<th> </th>
 				</tr>
 				<tbody>
 				<c:forEach var="employee" items="${employees}">
@@ -17,13 +16,10 @@
 						<td>${employee.firstname}</td>
 						<td>${employee.lastname}</td>
 						<td>${employee.phoneNumber}</td>
-						<!-- <td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td> -->
+						
+						
 						<td>
-						<a href ='<spring:url value="/editEmployee/${employee.employeeId}"/>'>
+						<a href ='<spring:url value="/editEmployee?id=${employee.employeeId}"/>'>
 							<button class="btn btn-primary btn-xs">
 								<span class="glyphicon glyphicon-pencil"></span>
 								EDIT

@@ -8,7 +8,7 @@
 							<ul class="nav nav-second-level">
 								<li><a href="${pageContext.request.contextPath}/createEmployee"><i class="fa fa-plus fa-fw"></i>
 										New Employee</a></li>
-								<li><a href="morris.html"><i
+								<li><a href="${pageContext.request.contextPath}/employeeList"><i
 										class="fa fa-list-alt fa-fw"></i> Employees List</a></li>
 							</ul> <!-- /.nav-second-level --></li>
 						<li><a href="#"><i class="fa fa-square fa-fw"></i>
@@ -34,21 +34,21 @@
 									<ul class="nav nav-third-level">
 										<li><a href="${pageContext.request.contextPath}/createRelease"><i class="fa fa-plus fa-fw"></i> New
 												Release</a></li>
-										<li><a href="#"><i class="fa fa-list-alt fa-fw"></i>
+										<li><a href="${pageContext.request.contextPath}/viewRelease"><i class="fa fa-list-alt fa-fw"></i>
 												Releases List</a></li>
 									</ul> <!-- /.nav-third-level --></li>
 								<li><a href="#">Sprint <span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
 										<li><a href="${pageContext.request.contextPath}/createSprint"><i class="fa fa-plus fa-fw"></i> New
 												Sprint</a></li>
-										<li><a href="#"><i class="fa fa-list-alt fa-fw"></i>
+										<li><a href="${pageContext.request.contextPath}/viewSprint"><i class="fa fa-list-alt fa-fw"></i>
 												Sprints List</a></li>
 									</ul> <!-- /.nav-third-level --></li>
 								<li><a href="#">User Story <span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
 										<li><a href="${pageContext.request.contextPath}/createUserStory"><i class="fa fa-plus fa-fw"></i> New
 												User Story</a></li>
-										<li><a href="${pageContext.request.contextPath}/releaseUS"><i class="fa fa-plus fa-fw"></i> Add
+										<li><a href="${pageContext.request.contextPath}/addToSprint"><i class="fa fa-plus fa-fw"></i> Add
 												To Sprint</a></li>
 										<li><a href="${pageContext.request.contextPath}/viewUserStory"><i class="fa fa-list-alt fa-fw"></i>
 												User Stories List</a></li>

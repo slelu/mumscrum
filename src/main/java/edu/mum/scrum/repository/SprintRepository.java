@@ -10,4 +10,5 @@ import edu.mum.scrum.domain.Sprint;
 public interface SprintRepository extends JpaRepository <Sprint, Long> {
 
 	public Sprint findBySprintName(String name);
+	
 }
