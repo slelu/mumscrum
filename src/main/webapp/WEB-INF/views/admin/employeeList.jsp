@@ -1,4 +1,5 @@
 <%@ include file="../../layouts/taglib.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div class="row">
 	<div class="col-md-12">
 		<div class="table-responsive">
