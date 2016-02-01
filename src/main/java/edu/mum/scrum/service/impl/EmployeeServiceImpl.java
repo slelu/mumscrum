@@ -58,5 +58,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 		 return avaTes;
 		
 	}
+	@Override
+	public Employee getEmployeeById(Long employeeId) {
+		return employeeRepository.findByEmployeeId(employeeId);
+	}
+	@Override
+	public Employee findByUsername(String username) {
+		return employeeRepository.findByUsername(username);
+	}
 
 }

@@ -1,10 +1,13 @@
 package edu.mum.scrum.domain;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -25,13 +28,13 @@ public class Employee {
 	private boolean enabled;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	private List<UserStory> userStories;
+	private List<UserStory> userStories = new ArrayList<>();
 	
 	@Transient
-	List<Long> rolesIds;
+	List<Long> rolesIds = new ArrayList<>();
 	
-	@ManyToMany(cascade=CascadeType.ALL)
-	private Set<Role> roles;
+	@ManyToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	private Set<Role> roles = new HashSet<>();
 	
 	
 	public List<Long> getRolesIds() {
@@ -119,5 +122,18 @@ public class Employee {
 	 public List<UserStory> getUserStory(){
 		 return userStories;
 	 }
-	
+	 
+	 public boolean isDeveloper(){
+		 if(roles.contains(new Role("DEVELOPER"))){
+			 return true;
+		 }
+		 return false;
+	 }
+	 
+	 public boolean isTester(){
+		 if(roles.contains(new Role("TESTER"))){
+			 return true;
+		 }
+		 return false;
+	 }
 }

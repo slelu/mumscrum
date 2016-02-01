@@ -9,5 +9,7 @@ import edu.mum.scrum.domain.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 	
 	public List<Employee> findByRoles_RoleName(String roleName);
+	public Employee findByEmployeeId(Long employeeId);
+	public Employee findByUsername(String username);
 
 }

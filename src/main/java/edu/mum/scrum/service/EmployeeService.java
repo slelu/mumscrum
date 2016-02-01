@@ -9,4 +9,9 @@ public interface EmployeeService {
 	
 	List<Employee> getAvailableDev();
 	List<Employee> getAvailableTesters();
+	
+	
+	public Employee getEmployeeById(Long id);
+
+	Employee findByUsername(String username);
 }

@@ -24,9 +24,11 @@
 							</button>
 						</td>
 						<td>
+						<a href="#">
 							<button type="button" class="btn btn-danger btn-xs">
-								<span class="glyphicon glyphicon-remove"></span>Disable
+								<span class="glyphicon glyphicon-remove"></span> Disable
 							</button>
+							</a>
 						</td>
 					</tr>
 

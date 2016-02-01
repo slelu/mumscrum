@@ -3,21 +3,65 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	
+
 	<definition name="baseLayout" template="/WEB-INF/tiles/template/baseLayout.jsp">
 		<put-attribute name="title" value="Sample Title" />
-        <put-attribute name="heading" value="" />
+		<put-attribute name="heading" value="" />
 		<!-- <put-attribute name="tagline" value="" /> -->
- 		<put-attribute name="sidebar" value="/WEB-INF/tiles/template/sideBar.jsp" />
+		<put-attribute name="sidebar"
+			value="/WEB-INF/tiles/template/sideBar.jsp" />
 		<put-attribute name="body" value="" />
-		<!-- <put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" /> -->
+		<!-- <put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" 
+			/> -->
 	</definition>
-	
-	
- 	<definition name="sample" extends="baseLayout">
+
+
+	<definition name="sample" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
 		<put-attribute name="heading" value="Employees List" />
- 		<put-attribute name="body" value="/WEB-INF/views/sample.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/sample.jsp" />
+	</definition>
+
+	<definition name="estimateDeveloperUserStory" extends="baseLayout">
+		<put-attribute name="title" value="Estimate User Story" />
+		<put-attribute name="heading" value="Estimate User Story" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/developer/estimateUserStory.jsp" />
+	</definition>
+
+	<definition name="developerUserStoryList" extends="baseLayout">
+		<put-attribute name="title" value="Estimate Development Effort" />
+		<put-attribute name="heading" value="Estimate Development Effort" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/developer/userStoryList.jsp" />
+	</definition>
+
+	<definition name="developerNewWorklog" extends="baseLayout">
+		<put-attribute name="title" value="New Worklog" />
+		<put-attribute name="heading" value="New Worklog" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/developer/newWorklog.jsp" />
+	</definition>
+	
+	<definition name="estimateTesterUserStory" extends="baseLayout">
+		<put-attribute name="title" value="Estimate Testing Effort" />
+		<put-attribute name="heading" value="Estimate Testing Effort" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/tester/estimateUserStory.jsp" />
+	</definition>
+	
+	<definition name="testerUserStoryList" extends="baseLayout">
+		<put-attribute name="title" value="Estimate Testing Effort" />
+		<put-attribute name="heading" value="Estimate Testing Effort" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/tester/userStoryList.jsp" />
+	</definition>
+
+	<definition name="testerNewWorklog" extends="baseLayout">
+		<put-attribute name="title" value="New Worklog" />
+		<put-attribute name="heading" value="New Worklog" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/tester/newWorklog.jsp" />
 	</definition>
 
 </tiles-definitions>

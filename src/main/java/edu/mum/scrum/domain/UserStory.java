@@ -2,10 +2,14 @@ package edu.mum.scrum.domain;
 
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class UserStory {
@@ -14,11 +18,13 @@ public class UserStory {
 	private long userStoryId;
 	private String name;
 	private String priority;
-	private int devEstimate;
-	private int testEstimate;
+	@Min(1)
+	private Integer devEstimate;
+	@Min(1)
+	private Integer testEstimate;
 	private String state;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.REFRESH)
 	private Employee assignedDev;
 	@OneToOne
 	private Employee assignedTes;
@@ -74,22 +80,6 @@ public class UserStory {
 		this.description = description;
 	}
 
-	public int getDevEstimate() {
-		return devEstimate;
-	}
-
-	public void setDevEstimate(int devEstimate) {
-		this.devEstimate = devEstimate;
-	}
-
-	public int getTestEstimate() {
-		return testEstimate;
-	}
-
-	public void setTestEstimate(int testEstimate) {
-		this.testEstimate = testEstimate;
-	}
-
 	public String getState() {
 		return state;
 	}
@@ -97,7 +87,24 @@ public class UserStory {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
-	
 
+	public Integer getDevEstimate() {
+		return devEstimate;
+	}
+
+	public void setDevEstimate(Integer devEstimate) {
+		this.devEstimate = devEstimate;
+	}
+
+	public Integer getTestEstimate() {
+		return testEstimate;
+	}
+
+	public void setTestEstimate(Integer testEstimate) {
+		this.testEstimate = testEstimate;
+	}
+	
+	public boolean isEstimated(){
+		return this.devEstimate != null && this.testEstimate != null;
+	}
 }
