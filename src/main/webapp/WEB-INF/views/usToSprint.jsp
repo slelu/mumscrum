@@ -1,5 +1,8 @@
 <%@ include file="../layouts/taglib.jsp"%>
-
+<c:if test="${not empty emptyUS}">
+<div class="alert alert-success"  >${emptyUS}<br />
+</div>
+</c:if>
 <div class="row">
 	<div class="col-md-12">
 		<div class="table-responsive">
@@ -26,13 +29,13 @@
 						<td>${userStory.state}</td>
 						<td>${userStory.devEstimate}</td>
 						<td>${userStory.testEstimate}</td>	
-						<td> 
-						<form:select name="sprint" path="">
-					<form:option value="NONE" label="--- Select ---"/>
+						 
+				<td><form:select name="sprint" path="">
+					     <form:option value="NONE" label="--- Select ---"/>
 						<c:forEach var="sprint" items="${sprints}">
-							<option>${sprint.sprintName}<option>
-						</c:forEach>
-					</form:select> </td>					
+							<option>${sprint.sprintName}<option> 
+						</c:forEach> 
+					</form:select> 	</td>			
 						<td>
 						<input type="hidden" name=id value="${userStory.userStoryId}"/>	
 						<input type="submit" id="btnAdd" class="btn btn-primary"

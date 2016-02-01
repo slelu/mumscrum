@@ -10,6 +10,8 @@ public interface UserStoryService {
 	public int deleteUserStoryById(Long userStoryId);
 	public List<UserStory> getAllUserStories();
     public List<UserStory> getAllUserStoryByReleaseId(long id);
+    void saveUserStoryById(long userStoryId ,String sprintName);
+    boolean checkUserStoryName(String name);
 	}
 
 

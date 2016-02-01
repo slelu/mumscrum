@@ -65,7 +65,7 @@
 	<definition name="employee" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
 		<put-attribute name="heading" value="Create Employee" />
- 		<put-attribute name="body" value="/WEB-INF/views/employee.jsp" />
+ 		<put-attribute name="body" value="/WEB-INF/views/admin/employee.jsp" />
 	</definition>
 	
 	<definition name="editEmployee" extends="baseLayout">

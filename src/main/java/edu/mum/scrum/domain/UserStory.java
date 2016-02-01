@@ -8,12 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+
 @Entity
 public class UserStory {
 	@Id 
 	@GeneratedValue
 	private long userStoryId;
+	@NotEmpty(message="can not be Empty")
 	private String name;
+	@NotEmpty(message="can not be Empty")
 	private String priority;
 
 	private int devEstimate;

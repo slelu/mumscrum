@@ -3,6 +3,7 @@
 	<name>mumscrum</name>
 	<comment></comment>
 	<projects>
+		<project>ESelling</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
