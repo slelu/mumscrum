@@ -1,15 +1,13 @@
 package edu.mum.scrum.domain;
 
-
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class UserStory {
@@ -28,7 +26,14 @@ public class UserStory {
 	private Employee assignedDev;
 	@OneToOne
 	private Employee assignedTes;
+
 	private String description;
+	
+	@ManyToOne
+	private ReleaseBacklog release;
+	
+	@ManyToOne
+	private Sprint sprint ;
 	
 
 	public long getUserStoryId() {
@@ -72,6 +77,7 @@ public class UserStory {
 		this.priority = priority;
 	}
 
+
 	public String getDescription() {
 		return description;
 	}
@@ -88,6 +94,22 @@ public class UserStory {
 		this.state = state;
 	}
 
+	public ReleaseBacklog getRelease() {
+		return release;
+	}
+
+	public void setRelease(ReleaseBacklog release) {
+		this.release = release;
+	}
+
+	public Sprint getSprint() {
+		return sprint;
+	}
+
+	public void setSprint(Sprint sprint) {
+		this.sprint = sprint;
+	}
+	
 	public Integer getDevEstimate() {
 		return devEstimate;
 	}

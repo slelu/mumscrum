@@ -41,6 +41,12 @@ public class UserStroyServiceImpl implements UserStoryService{
 	public List<UserStory> getAllUserStories() {
 		return userStoryRepository.findAll();
 	}
+	
+	@Override
+	public List<UserStory> getAllUserStoryByReleaseId(long id) {
+		
+		return userStoryRepository.findByRelease_ReleaseId(id);
+	}
 
 	@Override
 	public List<UserStory> getAllUnestimatedDeveloperUserStories(Employee developer) {

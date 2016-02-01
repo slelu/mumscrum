@@ -11,6 +11,7 @@ public interface UserStoryRepository extends JpaRepository<UserStory ,Long>{
 	
 	public int deleteByUserStoryId(Long id);
 	
+	public List<UserStory> findByRelease_ReleaseId(long id);
 
 	public List<UserStory> findByAssignedDevAndDevEstimateNull(Employee developer);
 	
@@ -18,3 +19,4 @@ public interface UserStoryRepository extends JpaRepository<UserStory ,Long>{
 	
 	
 }
+

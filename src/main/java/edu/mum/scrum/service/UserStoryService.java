@@ -14,6 +14,8 @@ public interface UserStoryService {
 	public int deleteUserStoryById(Long userStoryId);
 
 	public List<UserStory> getAllUserStories();
+	
+	public List<UserStory> getAllUserStoryByReleaseId(long id);
 
 	public List<UserStory> getAllUnestimatedDeveloperUserStories(Employee developer);
 

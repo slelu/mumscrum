@@ -33,6 +33,7 @@
 
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -118,6 +119,16 @@
 	<!-- jQuery -->
 	<script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
 
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	
+	<script>
+	$(function() {
+		$("#datepicker1").datepicker();
+		$("#datepicker2").datepicker();
+	});
+</script>
+
+
 	<!-- Bootstrap Core JavaScript -->
 	<script
 		src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -132,3 +143,4 @@
 </body>
 
 </html>
+

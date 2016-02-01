@@ -12,6 +12,7 @@ import edu.mum.scrum.domain.ReleaseBacklog;
 import edu.mum.scrum.domain.UserStory;
 import edu.mum.scrum.service.EmployeeService;
 import edu.mum.scrum.service.ReleaseService;
+import edu.mum.scrum.service.SprintService;
 import edu.mum.scrum.service.UserStoryService;
 
 @Controller
@@ -22,24 +23,30 @@ public class UserStoryController {
 	ReleaseService releaseService;
 	@Autowired
 	EmployeeService employeeService;
+	@Autowired
+	SprintService sprintService;
+	
+	/*display User Story form  */
 	
 	@RequestMapping(value="/createUserStory" ,method=RequestMethod.GET)
 	public String createUserStory(@ModelAttribute("userStory") UserStory userStory){
 		
-		return "userStory";
-		
+		return "userStory";	
 	}
+	
+	/* save User Story form */
 	
 	@RequestMapping(value="/createUserStory", method=RequestMethod.POST)
 	public String saveUserStory(@ModelAttribute("userStory") UserStory userStory ){
-		//userStoryService.saveUserStory(userStory);
-		ReleaseBacklog release =releaseService.getReleaseById(1);
-		System.out.println(release.getName());
-		release.addUserStory(userStory);
-		releaseService.saveRelease(release);
 		
-		return "redirect:/";
+		ReleaseBacklog release =releaseService.getReleaseById(1);
+		userStory.setRelease(release);
+		userStoryService.saveUserStory(userStory);
+			
+		return "redirect:/viewUserStory";
 	}
+	
+	/* edit User Story*/
 	
 	@RequestMapping(value = "/editUserStory", method=RequestMethod.GET)
 	public String editUserStory(UserStory userStory ,Model model,@RequestParam("id") Long id) {
@@ -49,30 +56,81 @@ public class UserStoryController {
 		return "userStory";
 	}
 	
+	/*delete User Story*/
+	
 	@RequestMapping(value = "/deleteUserStory", method=RequestMethod.GET)
 	public String deleteUserStory(UserStory userStory ,Model model,@RequestParam("id") Long id) {
 		
-		//model.addAttribute("userStory", userStoryService.getUserStory(id));
-		releaseService.deleteUserStoryById(id);
-		return "redirect:/";
+		userStoryService.deleteUserStoryById(id);
+		return "redirect:/viewUserStory";
 	}
+	
+	/* display list of User Stories*/
 	
 	@RequestMapping(value = "/viewUserStory", method=RequestMethod.GET)
 	public String viewUserStory(Model model) {
 		
-		model.addAttribute("userStory", userStoryService.getAllUserStories());
+		model.addAttribute("userStories", userStoryService.getAllUserStories());
 		
-		return "redirect:/";
+		return "userStoryList";
 	}
 	
+	/*display User Story Assign form*/
+	
 	@RequestMapping(value="/assignUserStory" ,method=RequestMethod.GET)
-	public String assignUserStory(UserStory userStory ,Model model){
+	public String assignUserStory(@ModelAttribute("userStory")UserStory userStory , @RequestParam("id") Long id ,Model model){
 		
-		model.addAttribute("developer",employeeService.getAvailableDev());
-		model.addAttribute("tester",employeeService.getAvailableTesters());
+		model.addAttribute("userStories",userStoryService.getUserStoryById(id));
+		model.addAttribute("developers",employeeService.getAvailableDev());
+		model.addAttribute("testers",employeeService.getAvailableTesters());
 		
 		return "assignUs";
 		
 	}
+     /* save assigned developer and tester*/
+	
+	@RequestMapping(value="/assignUserStory" ,method=RequestMethod.POST)
+	public String saveAssignUserStory(@RequestParam("id") Long id,@RequestParam("developer") String devName,
+			@RequestParam("tester") String testName,Model model){
+		
+		UserStory userStory = userStoryService.getUserStoryById(id);
+		if (!devName.equals("NONE")){
+		userStory.setAssignedDev(employeeService.getEmployeeByName(devName));
+		}
+		if (!testName.equals("NONE")){
+		userStory.setAssignedTes(employeeService.getEmployeeByName(testName));
+		}
+		userStoryService.saveUserStory(userStory);
+		
+		return "redirect:/viewUserStory";
+	}
+	
+	/*display User Stories not added to sprint*/
+	@RequestMapping(value="/addToSprint" ,method=RequestMethod.GET)
+	public String addToSprint(@ModelAttribute("userStory")UserStory userStory,Model model){
+		
+		model.addAttribute("userStories",userStoryService.getAllUserStoryByReleaseId(1));
+		model.addAttribute("sprints",sprintService.getAllSprints());
+		
+		return "usToSprint";
+		
+	}
+	
+	/*save a User Story added to Sprint*/
+	
+	@RequestMapping(value="/addToSprint" ,method=RequestMethod.POST)
+	public String saveAddToSprint(@RequestParam("id") Long id,@RequestParam("sprint") String sprintName ,Model model){
+		
+		System.out.println(id+"----"+sprintName);
+		UserStory userStory = userStoryService.getUserStoryById(id);
+		userStory.setSprint(sprintService.searchSprintByName(sprintName));
+		userStory.setRelease(null);
+		userStoryService.saveUserStory(userStory);
+		
+		return "redirect:/addToSprint";
+		
+	}
+	
+	
 	
 }

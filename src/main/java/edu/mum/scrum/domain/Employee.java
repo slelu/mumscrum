@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,10 +24,12 @@ public class Employee {
 	private String lastname;
 	private String username;
 	private String password;
+	private String phoneNumber;
 	@Transient
 	private String passwordConfirm;
 	private boolean enabled;
-	
+	@Embedded
+	private Address address;
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<UserStory> userStories = new ArrayList<>();
 	
@@ -136,4 +139,12 @@ public class Employee {
 		 }
 		 return false;
 	 }
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 }

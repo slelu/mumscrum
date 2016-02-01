@@ -66,5 +66,42 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee findByUsername(String username) {
 		return employeeRepository.findByUsername(username);
 	}
+	
+	@Override
+	public Employee getEmployeeByName(String name) {
+		return employeeRepository.findByFirstname(name);
+	}
+
+
+	@Override
+	public Employee getEmployee(Long id) {
+		
+		return employeeRepository.findOne(id);
+	}
+
+
+	@Override
+	public void deleteEmployeeById(Long id) {
+		
+		employeeRepository.deleteByEmployeeId(id);
+		
+	}
+
+
+	@Override
+	public List<Employee> getAllEmployees() {
+		return employeeRepository.findAll();
+	}
+	@Override
+	public void disableEmployee(Employee employee) {
+		
+		employeeRepository.save(employee);
+		
+	}
+	@Override
+	public void updateEmployee(Employee employee) {
+		
+		employeeRepository.save(employee);
+	}
 
 }

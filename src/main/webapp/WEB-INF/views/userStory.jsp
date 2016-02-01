@@ -1,86 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="../layouts/taglib.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<%@ include file="../layouts/library_links.jsp"%>
-<title>UserStory</title>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-
-</head>
-
-<body>
-	<div id="custom-bootstrap-menu"
-		class="navbar navbar-default navbar-fixed-top " role="navigation">
-		<div class="container-fluid ">
-
-			<!-- Logo -->
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/"> <img
-					src="resources/images/agile_scrum.jpg" alt="">
-				</a>
-			</div>
-			<!-- Menu Items -->
-			<div class="collapse navbar-collapse navbar-menubuilder"
-				style="margin-right: 50px">
-				<ul class="nav navbar-nav navbar-left">
-					<li><a href="${pageContext.request.contextPath}/">Home</a></li>
-					<li><a href="${pageContext.request.contextPath}/createRelease"><span
-							class="glyphicon glyphicon-plus"></span> New RELEASE</a></li>
-					<li><a href="#"><span
-							class="glyphicon glyphicon-align-justify"></span> RELEASES LIST</a></li>
-					<!-- <li><a href="#"><span
-							class="glyphicon glyphicon-plus"></span> NEW SPRINT</a></li>
-					<li><a href="#"><span
-							class="glyphicon glyphicon-align-justify"></span> SPRINTS LIST</a></li> -->
-					<li><a href="#"><span
-							class="glyphicon glyphicon-plus"></span> NEW USER STORY</a></li>
-					<li><a href="#"><span
-							class="glyphicon glyphicon-align-justify"></span> USER STORIES LIST</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Welcome<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
-							<li class="divider"></li>
-							<li><a href="#"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
-						</ul></li>
-					<li><a href="?language=en"> <img align="right"
-							alt="English"
-							src="resources/images/country/united_states_flag.png"
-							style="margin-right: -20px" title="English">
-					</a></li>
-					<li><a href="?language=zh_CN"> <img align="right"
-							alt="Chinese" src="resources/images/country/china_flag.png"
-							style="margin-right: -20px" title="Chinese">
-					</a></li>
-					<li><a href="?language=sp"> <img align="right"
-							alt="Spanish" src="resources/images/country/spain_flag.png"
-							style="margin-right: -20px" title="Español">
-					</a></li>
-				</ul>
-
-			</div>
-		</div>
-	</div>
-
-	<div class="container" style="margin-top: 30px;">
-		<div id="loginbox" style="margin-top: 30px;"
-			class="mainbox col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-2">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<div class="panel-title">
-						<span class="glyphicon glyphicon-plus"></span><b> NEW USERSTORY</b>
-					</div>
-				</div>
-				<div class="panel-body">
-				 <form:form modelAttribute="userStory" class="form-horizontal" method="POST"
-							enctype="utf8">
+			
+				 <form:form method="post" action="${pageContext.request.contextPath}/createUserStory?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data" 
+				          commandName="userStory" class="form-horizontal" role="form">
 								<div class="form-group">
 									<label class="control-label col-sm-3" for="name">UserStory
 										Name:</label>
@@ -103,8 +25,11 @@
 											value="${userStory.priority}" />
 									</div>
 								</div>
-								<input type="hidden" name=id value="${userStory.userStoryId}"/>
-								<input type="hidden" name=state value="new"/>
+								 <input type="hidden" name=userStoryId value="${userStory.userStoryId}"/>
+								 <input type="hidden" name=state value="new"/>
+								 <input type="hidden" name=update value="${falsevalue}"/>
+			                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+								
 								
 								<div class="form-group">
 									<div class="col-lg-offset-2 col-lg-10">
@@ -114,11 +39,6 @@
 								</div>
 
 						</form:form>
-					</div>
-				</div>
-			</div>
-		</div>
-</body>
-
+					
 
 </html>
