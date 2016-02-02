@@ -17,6 +17,8 @@ public interface UserStoryRepository extends JpaRepository<UserStory ,Long>{
 	
 	public List<UserStory> findByAssignedTesAndTestEstimateNull(Employee tester);
 	
+	public List<UserStory> findByAssignedDevAndStateAndDevEstimateNotNullAndTestEstimateNotNull(Employee developer, String state);
 	
+	public List<UserStory> findByAssignedTesAndStateAndDevEstimateNotNullAndTestEstimateNotNull(Employee tester, String state);
 }
 

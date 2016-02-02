@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.mum.scrum.domain.Employee;
 import edu.mum.scrum.domain.UserStory;
+import edu.mum.scrum.domain.WorkLog;
 import edu.mum.scrum.service.EmployeeService;
 import edu.mum.scrum.service.UserStoryService;
 
@@ -32,21 +33,20 @@ public class DeveloperController {
 	@Autowired EmployeeService employeeService;
 	
 	@ModelAttribute("developerUserStoriesToBeEstimated")
-	public List<UserStory> getAllUnestimatedUserStories(Employee developer, Model model, Principal principal){
+	public List<UserStory> getAllUnestimatedUserStories(Employee developer,Model model, Principal principal){
 		
-		Employee e = employeeService.findByUsername(principal.getName().toLowerCase());
+		Employee e = employeeService.findByUsername(principal.getName());
 
 		List<UserStory> unestimatedUserStories = userStoryService.getAllUnestimatedDeveloperUserStories(e);
 		
 		if(unestimatedUserStories.isEmpty()){
-			model.addAttribute("EMPTY_LIST", "You don't have un-eastimated user stories!");
+			model.addAttribute("EMPTY_LIST_UNESTIMATED", "You don't have un-eastimated user stories!");
 		}
 		return unestimatedUserStories;
 	}
 	
-
 	@RequestMapping(value="/developerUserStoryList", method=RequestMethod.GET)
-	public String list(){
+	public String unestimatedUserStoryList(){
 		return "developerUserStoryList";
 	}
 
@@ -62,7 +62,6 @@ public class DeveloperController {
 		if (!result.hasErrors()) {
 			UserStory u =userStoryService.getUserStoryById(developerUserStory.getUserStoryId());
 			u.setDevEstimate(developerUserStory.getDevEstimate());
-			u.setTestEstimate(developerUserStory.getTestEstimate());
 			if(u.isEstimated()){
 				u.setState("IN-PROGRESS");
 			}
@@ -74,10 +73,49 @@ public class DeveloperController {
 		return view;
 	}
 	
+	@ModelAttribute("developerUserStoriesEstimated")
+	public List<UserStory> getAllEstimatedUserStories(Employee developer, Model model, Principal principal){
+		
+		Employee e = employeeService.findByUsername(principal.getName());
+		
+		List<UserStory> estimatedUserStories = userStoryService.getAllEstimatedDeveloperUserStories(e);
+		
+		if(estimatedUserStories.isEmpty()){
+			model.addAttribute("EMPTY_LIST_ESTIMATED", "You don't have user stories in progress!");
+		}
+		return estimatedUserStories;
+	}
+	
+	@RequestMapping(value="/developerEstimatedUserStoryList", method=RequestMethod.GET)
+	public String estimatedUserStoryList(){
+		return "developerEstimatedUserStoryList";
+	}
+	
+	@RequestMapping(value="/addDeveloperWorklog", method=RequestMethod.GET)
+	public String newWorklog(@RequestParam Long userStoryId, Model model){
+		model.addAttribute("developerUserStoryWorklog", userStoryService.getUserStoryById(userStoryId));
+		model.addAttribute("developerNewWorklog", new WorkLog());
+		return "developerNewWorklog";
+	}
+	
+	@RequestMapping(value="/addDeveloperWorklog", method=RequestMethod.POST)
+	public String addWorklog(@Valid @ModelAttribute("developerUserStoryWorklog") UserStory developerUserStoryWorklog, @ModelAttribute("developerNewWorklog") WorkLog developerNewWorklog,BindingResult result, final RedirectAttributes redirectAttributes){
+		String view = "redirect:/developerEstimatedUserStoryList";
+		if (!result.hasErrors()) {
+			UserStory u =userStoryService.getUserStoryById(developerUserStoryWorklog.getUserStoryId());
+			u.addWorkLog(developerNewWorklog);
+			userStoryService.saveUserStory(u);
+			redirectAttributes.addFlashAttribute("SUCCESS_MESSAGE", "Worklog was added Successfully !");
+		} else {
+			view = "developerNewWorklog";
+		}
+		return view;
+	}
+	/*..........................................................................................
 	@RequestMapping(value="/developerNewWorklog", method=RequestMethod.GET)
 	public String newWorklog(){
 		return "developerNewWorklog";
 	}
 	
-	
+	*/
 }

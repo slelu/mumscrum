@@ -58,4 +58,15 @@ public class UserStroyServiceImpl implements UserStoryService{
 		return userStoryRepository.findByAssignedTesAndTestEstimateNull(tester);
 	}
 
+	@Override
+	public List<UserStory> getAllEstimatedDeveloperUserStories(Employee developer) {
+		return userStoryRepository.findByAssignedDevAndStateAndDevEstimateNotNullAndTestEstimateNotNull(developer, "IN-PROGRESS");
+	}
+
+	@Override
+	public List<UserStory> getAllEstimatedTesterUserStories(Employee tester) {
+		return userStoryRepository.findByAssignedTesAndStateAndDevEstimateNotNullAndTestEstimateNotNull(tester, "IN-PROGRESS");
+	}
+
+	
 }

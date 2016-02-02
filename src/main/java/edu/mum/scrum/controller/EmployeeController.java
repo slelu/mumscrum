@@ -33,7 +33,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/createEmployee", method = RequestMethod.GET)
 	public String createEmployee(@ModelAttribute("employee") Employee employee, Model model) {
 		model.addAttribute("roles", roleService.getAllRoles() );
-		return "admin/employee";
+		return "employee";
 	}
 	
 	@RequestMapping(value = "/createEmployee", method = RequestMethod.POST)
@@ -49,14 +49,14 @@ public class EmployeeController {
 		model.addAttribute("employee", employeeService.getEmployee(id));
 		model.addAttribute("roles", roleService.getAllRoles() );
 		
-		return "admin/employee";
+		return "employee";
 	}
 	
 	@RequestMapping(value="/employeeList", method=RequestMethod.GET)
 	public String getAllSprint(Model model) {
 		model.addAttribute("employees",employeeService.getAllEmployees());
 		
-		return "admin/employeeList";
+		return "employeeList";
 	}
 	
 	@RequestMapping(value = "/deleteEmployee/{id}", method=RequestMethod.GET)

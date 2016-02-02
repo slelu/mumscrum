@@ -21,10 +21,9 @@
 					</div>
 				</c:if>
 				<c:choose>
-					<c:when test="${EMPTY_LIST_UNESTIMATED != null}">
+					<c:when test="${EMPTY_LIST_ESTIMATED != null}">
 						<div class="alert alert-info" role="alert">
-							<c:out value="${EMPTY_LIST_UNESTIMATED}" />
-							<a href="developerNewWorklog" class="alert-link">Add work logs?</a>
+							<c:out value="${EMPTY_LIST_ESTIMATED}" />
 						</div>
 					</c:when>
 					<c:otherwise>
@@ -40,7 +39,7 @@
 									<th></th>
 								</tr>
 								<tbody>
-									<c:forEach var="userStory" items="${developerUserStoriesToBeEstimated}">
+									<c:forEach var="userStory" items="${developerUserStoriesEstimated}">
 										<tr>
 											<td>${userStory.name }</td>
 											<td>${userStory.description }</td>
@@ -49,9 +48,9 @@
 											<td><strong>${userStory.devEstimate eq null ? 'NOT ESTIMATED' :  userStory.devEstimate}</strong></td>
 											</security:authorize>
 											<td><a
-												href='<spring:url value="/developerEstimate?userStoryId=${userStory.userStoryId}"/>'>
+												href='<spring:url value="/addDeveloperWorklog?userStoryId=${userStory.userStoryId}"/>'>
 													<button class="btn btn-primary btn-xs">
-														<span class="glyphicon glyphicon-pencil"> Estimate</span>
+														<span class="glyphicon glyphicon-plus"> Add Work-log</span>
 													</button>
 											</a></td>
 										</tr>

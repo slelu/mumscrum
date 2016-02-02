@@ -10,14 +10,45 @@
 	<http pattern="/resources/**" security="none" />
 
 	<http use-expressions="true">
+		<intercept-url pattern="/createEmployee" access="hasRole('HR ADMIN')"/>
+		<intercept-url pattern="/editEmployee" access="hasRole('HR ADMIN')"/>
+		<intercept-url pattern="/employeeList" access="hasRole('HR ADMIN')"/>
+		<intercept-url pattern="/deleteEmployee/{id}" access="hasRole('HR ADMIN')"/>
+		<intercept-url pattern="/viewRelease" access="hasRole('SCRUM MASTER')"/>
+		<intercept-url pattern="/createRelease" access="hasRole('SCRUM MASTER')"/>
+		<intercept-url pattern="/viewRelease" access="hasRole('SCRUM MASTER')"/>
+		<intercept-url pattern="/createSprint" access="hasRole('SCRUM MASTER')"/>
+		<intercept-url pattern="/viewSprint" access="hasRole('SCRUM MASTER')"/>
+		<intercept-url pattern="/editSprint" access="hasRole('SCRUM MASTER')"/>
+		<intercept-url pattern="/createUserStory" access="hasRole('SCRUM MASTE')"/>
+		<intercept-url pattern="/editUserStory" access="hasRole('SCRUM MASTE')"/>
+		<intercept-url pattern="/deleteUserStory" access="hasRole('SCRUM MASTE')"/>
+		<intercept-url pattern="/viewUserStory" access="hasRole('SCRUM MASTE')"/>
+		<intercept-url pattern="/assignUserStory" access="hasRole('SCRUM MASTE')"/>
+		<intercept-url pattern="/addToSprint" access="hasRole('SCRUM MASTE')"/>
+		<intercept-url pattern="/developerUserStoryList" access="hasRole('DEVELOPER')"/>
+		<intercept-url pattern="/developerEstimate" access="hasRole('DEVELOPER')"/>
+		<intercept-url pattern="/developerEstimatedUserStoryLis" access="hasRole('DEVELOPER')"/>
+		<intercept-url pattern="/addDeveloperWorklog" access="hasRole('DEVELOPER')"/>
+		<intercept-url pattern="/testerUserStoryList" access="hasRole('TESTER')"/>
+		<intercept-url pattern="/testerEstimate" access="hasRole('TESTER')"/>
+		<intercept-url pattern="/testerEstimatedUserStoryList" access="hasRole('TESTER')"/>
+		<intercept-url pattern="/addTesterWorklog" access="hasRole('TESTER')"/>
 		<intercept-url pattern="/**" access="isAuthenticated()" />
-		<form-login login-page="/login" default-target-url="/userStoryList" authentication-failure-url = "/login?error=1"/>
-		<logout logout-url="/j_spring_security_logout" invalidate-session="true"/>
+		<form-login login-page="/login"
+			authentication-failure-url="/login?error=1" 
+			authentication-success-handler-ref="redirectRoleStrategy"/>
+		<logout logout-url="/j_spring_security_logout"
+			invalidate-session="true" delete-cookies="true"/>
+		<session-management>
+			<concurrency-control max-sessions="1"
+				expired-url="/login" />
+		</session-management>
 	</http>
 
 	<authentication-manager>
 		<authentication-provider>
-			<password-encoder hash="bcrypt"/>
+			<password-encoder hash="bcrypt" />
 			<jdbc-user-service data-source-ref="DataSource"
 				authorities-by-username-query="select employee.username, role.roleName from employee join employee_role on 
 										employee.employeeId = employee_role.Employee_employeeId join role on
@@ -26,4 +57,15 @@
 				users-by-username-query="select username, password, enabled from employee where username = ?" />
 		</authentication-provider>
 	</authentication-manager>
+	<beans:bean id="redirectRoleStrategy"
+		class="edu.mum.scrum.security.RoleBasedAuthenticationSuccessHandler">
+		<beans:property name="roleUrlMap">
+			<beans:map>
+				<beans:entry key="SCRUM MASTER" value="/viewRelease" />
+				<beans:entry key="DEVELOPER" value="/developerUserStoryList" />
+				<beans:entry key="TESTER" value="/testerUserStoryList" />
+				<beans:entry key="HR ADMIN" value="/employeeList" />
+			</beans:map>
+		</beans:property>
+	</beans:bean>
 </beans:beans>
