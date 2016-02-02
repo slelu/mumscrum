@@ -30,6 +30,8 @@ public class Employee {
 	private boolean enabled;
 	@Embedded
 	private Address address;
+	
+	
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<UserStory> userStories = new ArrayList<>();
 	
@@ -40,6 +42,7 @@ public class Employee {
 	private Set<Role> roles = new HashSet<>();
 	
 	
+
 	public List<Long> getRolesIds() {
 		return rolesIds;
 	}
@@ -133,7 +136,24 @@ public class Employee {
 		 return false;
 	 }
 	 
-	 public boolean isTester(){
+	 
+	 public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public List<UserStory> getUserStories() {
+		return userStories;
+	}
+
+	public void setUserStories(List<UserStory> userStories) {
+		this.userStories = userStories;
+	}
+
+	public boolean isTester(){
 		 if(roles.contains(new Role("TESTER"))){
 			 return true;
 		 }

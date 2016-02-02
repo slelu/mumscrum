@@ -10,20 +10,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class ReleaseBacklog {
 	@Id
 	@GeneratedValue
 	private long releaseId;
+	@NotEmpty(message="can not be Empty")
 	private String name;
+	@NotEmpty(message="can not be Empty")
 	private String description;
 	private Date startDate ;
 	private Date endDate;
 	
-	@OneToMany(mappedBy="release")
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="release")
 	private List<UserStory> userStories;
 	
-	@OneToMany(mappedBy="release")
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="release")
 	private List<Sprint> sprints;
 	
 	

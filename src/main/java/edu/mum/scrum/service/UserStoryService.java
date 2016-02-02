@@ -20,8 +20,15 @@ public interface UserStoryService {
 	public List<UserStory> getAllUnestimatedDeveloperUserStories(Employee developer);
 
 	public List<UserStory> getAllUnestimatedTesterUserStories(Employee tester);
-	
+
 	public List<UserStory> getAllEstimatedDeveloperUserStories(Employee developer);
 
 	public List<UserStory> getAllEstimatedTesterUserStories(Employee tester);
+
+	public List<UserStory> getAllUserStoryBySprintId(long id);
+
+	void saveUserStoryById(long userStoryId ,String sprintName);
+	
+    boolean checkUserStoryName(String name);
+
 }

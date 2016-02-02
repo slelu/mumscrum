@@ -19,8 +19,8 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost/mumscrum" />
-		<property name="username" value="root" />
-		<property name="password" value="root" />
+		<property name="username" value="root" />	
+		<property name="password" value="root" />	
 	</bean>
 	<bean id="hibernateJpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
@@ -37,7 +37,7 @@
 				<prop key="hibernate.hibernate.format_sql">true</prop>
 				<prop key="hibernate.connection.pool_size">10</prop>
 
-				<!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
+				<!-- <prop key="hibernate.hbm2ddl.auto">create</prop>  -->
 			</props>
 		</property>
 		<property name="packagesToScan" value="edu.mum.scrum.domain" />
@@ -58,6 +58,7 @@
 	<context:component-scan base-package="edu.mum.scrum.service" />
 	<context:component-scan base-package="edu.mum.scrum.domain" />
 	<context:component-scan base-package="edu.mum.scrum.repository" />
+	<context:component-scan base-package="edu.mum.scrum.hr" />
 
 	<jpa:repositories base-package="edu.mum.scrum.repository" />
 

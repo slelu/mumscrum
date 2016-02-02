@@ -42,3 +42,4 @@
 					</div>
 					</div>
 					</div>
+>>>>>>> branch 'master' of https://github.com/slelu/mumscrum.git

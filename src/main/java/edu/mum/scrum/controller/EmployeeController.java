@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.mum.scrum.domain.Employee;
+import edu.mum.scrum.hr.IHRSubSystem;
 import edu.mum.scrum.service.EmployeeService;
 import edu.mum.scrum.service.RoleService;
 
@@ -22,7 +23,7 @@ public class EmployeeController {
 	
 	
 	@Autowired
-	private EmployeeService employeeService;
+	IHRSubSystem subSystemFacade;
 	
 	@Autowired 
 	private RoleService roleService;
@@ -38,7 +39,7 @@ public class EmployeeController {
 	
 	@RequestMapping(value = "/createEmployee", method = RequestMethod.POST)
 	public String saveEmployee(@ModelAttribute("employee") Employee employee){
-		employeeService.saveEmployee(employee);
+		subSystemFacade.saveEmployee(employee);
 	
 		return "redirect:/employeeList";
 	}
@@ -46,7 +47,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/editEmployee", method=RequestMethod.GET)
 	public String editUserStory(Employee employee ,Model model,@RequestParam("id") Long id) {
 		
-		model.addAttribute("employee", employeeService.getEmployee(id));
+		model.addAttribute("employee", subSystemFacade.getEmployee(id));
 		model.addAttribute("roles", roleService.getAllRoles() );
 		
 		return "employee";
@@ -54,17 +55,17 @@ public class EmployeeController {
 	
 	@RequestMapping(value="/employeeList", method=RequestMethod.GET)
 	public String getAllSprint(Model model) {
-		model.addAttribute("employees",employeeService.getAllEmployees());
+		model.addAttribute("employees",subSystemFacade.getAllEmployees());
 		
 		return "employeeList";
 	}
 	
 	@RequestMapping(value = "/deleteEmployee/{id}", method=RequestMethod.GET)
 	public String deleteEmployee(@PathVariable("id") long id) {
-		Employee employee=employeeService.getEmployee(id);
+		Employee employee=subSystemFacade.getEmployee(id);
 		System.out.println(employee.getFirstname());
 		employee.setEnabled(false);	
-		employeeService.disableEmployee(employee);	
+		subSystemFacade.disableEmployee(employee);	
 		
 		return "redirect:/employeeList";
 	}

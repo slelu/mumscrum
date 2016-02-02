@@ -1,8 +1,6 @@
 package edu.mum.scrum.domain;
 
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,15 +11,18 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class UserStory {
 	@Id 
 	@GeneratedValue
-	private long userStoryId;
+	private Long userStoryId;
+	@NotEmpty(message="can not be Empty")
 	private String name;
+	@NotEmpty(message="can not be Empty")
 	private String priority;
 	private Integer devEstimate;
 	private Integer testEstimate;
@@ -31,7 +32,8 @@ public class UserStory {
 	private Employee assignedDev;
 	@OneToOne
 	private Employee assignedTes;
-
+	
+	@NotEmpty(message="can not be Empty")
 	private String description;
 	
 	@ManyToOne
@@ -43,11 +45,11 @@ public class UserStory {
 	@ElementCollection(fetch=FetchType.EAGER)
 	private Set<WorkLog> workLog = new LinkedHashSet<WorkLog>();
 
-	public long getUserStoryId() {
+	public Long getUserStoryId() {
 		return userStoryId;
 	}
 
-	public void setUserStoryId(long userStoryId) {
+	public void setUserStoryId(Long userStoryId) {
 		this.userStoryId = userStoryId;
 	}
 	

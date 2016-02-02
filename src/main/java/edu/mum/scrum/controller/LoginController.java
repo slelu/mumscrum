@@ -1,7 +1,7 @@
 package edu.mum.scrum.controller;
 
 import java.util.ArrayList;
-
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public class LoginController {
 	@Autowired
 	private UserStoryService userStoryService;
 	
-//@PostConstruct
+@PostConstruct
 	public void initialize(){
 		initializeRoles();
 		initializeEmployees();
