@@ -1,7 +1,7 @@
-<%@ include file="../../layouts/taglib.jsp"%>
+<%@ include file="../layouts/taglib.jsp"%>
 <html>
 <head>
-<%@ include file="../../layouts/library_links.jsp"%>
+<%@ include file="../layouts/library_links.jsp"%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
