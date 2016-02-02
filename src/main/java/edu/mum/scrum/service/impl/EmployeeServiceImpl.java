@@ -1,6 +1,6 @@
+
 package edu.mum.scrum.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,7 +8,6 @@ import java.util.Set;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import edu.mum.scrum.domain.Employee;
@@ -26,16 +25,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Autowired
 	private EmployeeRepository employeeRepository;
-	
-	
 	@Override
 	public void saveEmployee(Employee employee) {
-		BCryptPasswordEncoder en = new BCryptPasswordEncoder();
-		employee.setPassword(en.encode(employee.getPassword()));
+		
 		Set <Role> roles=new HashSet<Role>();
 		
 		for(Long id:employee.getRolesIds()){
-			Role role=roleRepository.findOne(id);
+			Role role=roleRepository.getOne(id);
 			roles.add(role);
 		}
 		employee.setRoles(roles);
@@ -43,8 +39,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	@Override
 	public List<Employee> getAvailableDev() {
-		List<Employee> avaDev =new ArrayList<Employee>();
-		List<Employee> developers = employeeRepository.findByRoles_RoleName("Developer");
+		List<Employee> avaDev = null;
+		List<Employee> developers = employeeRepository.findByRoles_RoleName("developer");
 		 for(Employee empl: developers){
 			 if(empl.getUserStory().size()<3)
 				 avaDev.add(empl);
@@ -54,8 +50,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	@Override
 	public List<Employee> getAvailableTesters() {
-	List<Employee> avaTes = new ArrayList<Employee>();
-		List<Employee> testers = employeeRepository.findByRoles_RoleName("Tester");
+		List<Employee> avaTes = null;
+		List<Employee> testers = employeeRepository.findByRoles_RoleName("developer");
 		 for(Employee empl: testers){
 			 if(empl.getUserStory().size()<3)
 				 avaTes.add(empl);
@@ -63,6 +59,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 		 return avaTes;
 		
 	}
+	@Override
+	public Employee getEmployeeById(Long employeeId) {
+		return employeeRepository.findByEmployeeId(employeeId);
+	}
+	@Override
+	public Employee findByUsername(String username) {
+		return employeeRepository.findByUsername(username);
+	}
+	
 	@Override
 	public Employee getEmployeeByName(String name) {
 		return employeeRepository.findByFirstname(name);
@@ -101,3 +106,4 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 }
+

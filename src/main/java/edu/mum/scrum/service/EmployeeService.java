@@ -6,6 +6,7 @@ import edu.mum.scrum.domain.Employee;
 
 public interface EmployeeService {
 	void saveEmployee(Employee employee);
+	public Employee getEmployeeById(Long id);
 	Employee getEmployee(Long id);
 	void deleteEmployeeById(Long id);
 	List <Employee> getAllEmployees();
@@ -14,5 +15,6 @@ public interface EmployeeService {
 	void disableEmployee(Employee employee);
 	void updateEmployee(Employee employee);
 	Employee getEmployeeByName(String name);
+	Employee findByUsername(String username);
 
 }

@@ -1,10 +1,13 @@
+
 package edu.mum.scrum.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,12 +23,11 @@ public class BurnDownChartController {
 	@Autowired
 	private SprintService sprintService;
 	
-	
 	@RequestMapping(value="/ViewBurnDownChart",method=RequestMethod.GET)
 	public String generateBDC(/*@RequestParam("id") Long id,*/Model model){
 		
-		/*String originalETC = "[3.0, 3.9]";
-		model.addAttribute("BDC", originalETC);*/
+       /* model.addAttribute("SprintName", sprintService.getSprintById(id).getSprintName());
+        System.out.println("sprintService.getSprintById(id).getSprintName()");*/
 		
 		String trend = "[7.0, 6.9, 9.5, 5.7, 7.9]";
 		String originalETC = "[-0.2, 0.8, 5.7]";

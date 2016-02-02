@@ -8,4 +8,6 @@ import edu.mum.scrum.domain.Role;
 @Repository
 public interface RoleRepository extends JpaRepository <Role, Long> {
 
+	Role findByRoleName(String roleName);
+
 }

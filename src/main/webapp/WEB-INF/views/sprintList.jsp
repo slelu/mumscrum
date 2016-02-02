@@ -15,10 +15,17 @@
 		<%-- <td>${sprint.duration} </td> --%>
 		<%-- <td>${sprint.startDate} </td> --%>
 		<%-- <td>${sprint.endDate} </td> --%>
-	     <td> <a href=" <spring:url value="/editSprint?id=${sprint.sprintId}" />"> 
+	     <td> <a href=" <spring:url value="/editSprint?id=${sprint.sprintId}" />">
 	 			<button class="btn btn-primary btn-xs">
 								<span class="glyphicon glyphicon-pencil"></span>
 								Edit
+							</button>
+							</a>
+                            </td>
+         <td> <a href=" <spring:url value="/ViewBurnDownChart?id=${sprint.sprintId}" />">
+	 			<button class="btn btn-primary btn-xs">
+								<span class="glyphicon glyphicon-pencil"></span>
+								Generate BurnDownChart
 							</button>
 							</a>
                             </td>

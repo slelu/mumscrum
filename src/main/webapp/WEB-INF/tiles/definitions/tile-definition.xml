@@ -30,11 +30,54 @@
 		<put-attribute name="heading" value="Assign User Story" /> 
  		<put-attribute name="body" value="/WEB-INF/views/assignUs.jsp" />
 	</definition>
-	
+
  	<definition name="sample" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
 		<put-attribute name="heading" value="Employees List" />
- 		<put-attribute name="body" value="/WEB-INF/views/sample.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/sample.jsp" />
+	</definition>
+
+	<definition name="estimateDeveloperUserStory" extends="baseLayout">
+		<put-attribute name="title" value="Estimate User Story" />
+		<put-attribute name="heading" value="Estimate User Story" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/developer/estimateUserStory.jsp" />
+	</definition>
+
+	<definition name="developerUserStoryList" extends="baseLayout">
+		<put-attribute name="title" value="Estimate Development Effort" />
+		<put-attribute name="heading" value="Estimate Development Effort" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/developer/userStoryList.jsp" />
+	</definition>
+
+	<definition name="developerNewWorklog" extends="baseLayout">
+		<put-attribute name="title" value="New Worklog" />
+		<put-attribute name="heading" value="New Worklog" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/developer/newWorklog.jsp" />
+	</definition>
+	
+	<definition name="estimateTesterUserStory" extends="baseLayout">
+		<put-attribute name="title" value="Estimate Testing Effort" />
+		<put-attribute name="heading" value="Estimate Testing Effort" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/tester/estimateUserStory.jsp" />
+	</definition>
+	
+	<definition name="testerUserStoryList" extends="baseLayout">
+		<put-attribute name="title" value="Estimate Testing Effort" />
+		<put-attribute name="heading" value="Estimate Testing Effort" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/tester/userStoryList.jsp" />
+	</definition>
+
+	<definition name="testerNewWorklog" extends="baseLayout">
+		<put-attribute name="title" value="New Worklog" />
+		<put-attribute name="heading" value="New Worklog" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/tester/newWorklog.jsp" />
+ 		<put-attribute name="body" value="/WEB-INF/views/test/testerNewWorkLog.jsp" />
 	</definition>
 	
 	<definition name="userStoryList" extends="baseLayout">
@@ -49,7 +92,6 @@
 		<put-attribute name="heading" value="Create Sprint" />
  		<put-attribute name="body" value="/WEB-INF/views/sprint.jsp" />
 	</definition>
-
 	
 	<definition name="sprintList" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
@@ -60,13 +102,13 @@
 	<definition name="employee" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
 		<put-attribute name="heading" value="Create Employee" />
- 		<put-attribute name="body" value="/WEB-INF/views/admin/employee.jsp" />
+ 		<put-attribute name="body" value="/WEB-INF/views/employee.jsp" />
 	</definition>
 	
 	<definition name="employeeList" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
-		<put-attribute name="heading" value="Employee List" />
- 		<put-attribute name="body" value="/WEB-INF/views/admin/employeeList.jsp" />
+		<put-attribute name="heading" value="Employees" />
+ 		<put-attribute name="body" value="/WEB-INF/views/employeeList.jsp" />
 	</definition>
 	
 	<definition name="usToSprint" extends="baseLayout">

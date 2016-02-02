@@ -1,29 +1,39 @@
+package edu.mum.scrum.domain;
 
-/*package edu.mum.scrum.domain;
-
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class WorkLog {
 	
-	private Date date;
-	private int workHours;
-	public Date getDate() {
-		return date;
+	@Id
+	@GeneratedValue
+	private Long workLogId;
+	private LocalDateTime time;
+	private Integer workHours;
+	
+	
+	public Long getWorkLogId() {
+		return workLogId;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setWorkLogId(Long workLogId) {
+		this.workLogId = workLogId;
 	}
-	public int getWorkHours() {
+	public LocalDateTime getTime() {
+		return time;
+	}
+	public void setTime(LocalDateTime time) {
+		this.time = time;
+	}
+	public Integer getWorkHours() {
 		return workHours;
 	}
-	public void setWorkHours(int workHours) {
+	public void setWorkHours(Integer workHours) {
 		this.workHours = workHours;
 	}
 	
 	
-
 }
-*/

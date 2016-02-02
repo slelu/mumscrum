@@ -1,12 +1,18 @@
 package edu.mum.scrum.domain;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 
 @Entity
 public class UserStory {
@@ -15,12 +21,13 @@ public class UserStory {
 	private long userStoryId;
 	private String name;
 	private String priority;
-
-	private int devEstimate;
-	private int testEstimate;
+	@Min(1)
+	private Integer devEstimate;
+	@Min(1)
+	private Integer testEstimate;
 	private String state;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.REFRESH)
 	private Employee assignedDev;
 	@OneToOne
 	private Employee assignedTes;
@@ -32,6 +39,9 @@ public class UserStory {
 	
 	@ManyToOne
 	private Sprint sprint ;
+	
+	@Transient
+	private List<WorkLog> workLog;
 	
 
 	public long getUserStoryId() {
@@ -84,22 +94,6 @@ public class UserStory {
 		this.description = description;
 	}
 
-	public int getDevEstimate() {
-		return devEstimate;
-	}
-
-	public void setDevEstimate(int devEstimate) {
-		this.devEstimate = devEstimate;
-	}
-
-	public int getTestEstimate() {
-		return testEstimate;
-	}
-
-	public void setTestEstimate(int testEstimate) {
-		this.testEstimate = testEstimate;
-	}
-
 	public String getState() {
 		return state;
 	}
@@ -124,6 +118,34 @@ public class UserStory {
 		this.sprint = sprint;
 	}
 	
-	
+	public Integer getDevEstimate() {
+		return devEstimate;
+	}
 
+	public void setDevEstimate(Integer devEstimate) {
+		this.devEstimate = devEstimate;
+	}
+
+	public Integer getTestEstimate() {
+		return testEstimate;
+	}
+
+	public void setTestEstimate(Integer testEstimate) {
+		this.testEstimate = testEstimate;
+	}
+	
+	public boolean isEstimated(){
+		return this.devEstimate != null && this.testEstimate != null;
+	}
+	
+	public Integer getWorkDone(LocalDate localDate){
+		
+		int workdone=0;
+		for (WorkLog w : workLog) {
+			if(w.getTime().toLocalDate().equals(localDate)){
+				workdone+=w.getWorkHours();
+			}
+		}
+		return workdone;
+	}
 }
