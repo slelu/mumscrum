@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
@@ -11,59 +9,61 @@
 		http://www.springframework.org/schema/context 
 		 	  http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-	
-	
-	<aop:config proxy-target-class="true"/>
-	
-	
+
+
+	<aop:config proxy-target-class="true" />
+
+
 	<!-- Data Source Declaration -->
-	<bean id="DataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />	
+	<bean id="DataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost/mumscrum" />
-		<property name="username" value="root" />	
-		<property name="password" value="" />	
+		<property name="username" value="root" />
+		<property name="password" value="root" />
 	</bean>
-	<bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+	<bean id="hibernateJpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 	<!-- Session Factory Declaration -->
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="DataSource"/>
-		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="DataSource" />
+		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.use_sql_comments">true</prop>
-				<prop key="hibernate.hibernate.format_sql">false</prop>
-				<prop key="hibernate.connection.pool_size">10</prop>				
+				<prop key="hibernate.hibernate.format_sql">true</prop>
+				<prop key="hibernate.connection.pool_size">10</prop>
 
-				 <!-- <prop key="hibernate.hbm2ddl.auto">create</prop>  --> 
+
+				<!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
 
 			</props>
 		</property>
-		<property name="packagesToScan" value="edu.mum.scrum.domain"/>
-		
+		<property name="packagesToScan" value="edu.mum.scrum.domain" />
+
 	</bean>
 	<!-- Enable the configuration of transactional behavior based on annotations -->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-    <!-- Transaction Manager is defined -->
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-       <property name="entityManagerFactory" ref="entityManagerFactory"/>
-    </bean>
-    
-    
-    
-    <!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- Transaction Manager is defined -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources/ directory -->
-		
+
 	<context:component-scan base-package="edu.mum.scrum.service" />
 	<context:component-scan base-package="edu.mum.scrum.domain" />
 	<context:component-scan base-package="edu.mum.scrum.repository" />
 	<context:component-scan base-package="edu.mum.scrum.hr" />
-	
-	<jpa:repositories base-package="edu.mum.scrum.repository"/>
 
-<bean id="persistenceExceptionTranslationPostProcessor"
+	<jpa:repositories base-package="edu.mum.scrum.repository" />
+
+	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-
-
- </beans>
+</beans>

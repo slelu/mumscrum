@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+<link rel="shortcut icon" href="resources/images/favicon.ico"
+	type="image/x-icon" />
 
 <title><tiles:insertAttribute name="title" /></title>
 
@@ -29,7 +31,8 @@
 	href="resources/bower_components/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 
-
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 </head>
 
@@ -58,7 +61,7 @@
 						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
 						</li>
 						<li class="divider"></li>
-						<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>
+						<li><a href="j_spring_security_logout"><i class="fa fa-sign-out fa-fw"></i>
 								Logout</a></li>
 					</ul> <!-- /.dropdown-user --></li>
 				<!-- /.dropdown -->

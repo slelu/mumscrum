@@ -1,5 +1,7 @@
 package edu.mum.scrum.domain;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -23,22 +25,19 @@ public class Employee {
 	private String username;
 	private String password;
 	private String phoneNumber;
-	
 	@Transient
 	private String passwordConfirm;
 	private boolean enabled;
-	
 	@Embedded
 	private Address address;
-	
 	@OneToMany(cascade=CascadeType.ALL)
-	private List<UserStory> userStories;
+	private List<UserStory> userStories = new ArrayList<>();
 	
 	@Transient
-	List<Long> rolesIds;
+	List<Long> rolesIds = new ArrayList<>();
 	
-	@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-	private Set<Role> roles;
+	@ManyToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	private Set<Role> roles = new HashSet<>();
 	
 	
 	public List<Long> getRolesIds() {
@@ -120,21 +119,25 @@ public class Employee {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-	
 	 public void addUserStory(UserStory userStory){
 		 this.userStories.add(userStory);
 	 }
 	 public List<UserStory> getUserStory(){
 		 return userStories;
+	 }
+	 
+	 public boolean isDeveloper(){
+		 if(roles.contains(new Role("DEVELOPER"))){
+			 return true;
+		 }
+		 return false;
+	 }
+	 
+	 public boolean isTester(){
+		 if(roles.contains(new Role("TESTER"))){
+			 return true;
+		 }
+		 return false;
 	 }
 
 	public String getPhoneNumber() {
@@ -144,16 +147,4 @@ public class Employee {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
-	public List<UserStory> getUserStories() {
-		return userStories;
-	}
-
-	public void setUserStories(List<UserStory> userStories) {
-		this.userStories = userStories;
-	}
-	 
-	 
-
-	
 }
