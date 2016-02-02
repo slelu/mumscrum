@@ -16,7 +16,7 @@ import org.hibernate.validator.constraints.Range;
 public class UserStory {
 	@Id 
 	@GeneratedValue
-	private long userStoryId;
+	private Long userStoryId;
 	@NotEmpty(message="can not be Empty")
 	private String name;
 	@NotEmpty(message="can not be Empty")
@@ -31,7 +31,8 @@ public class UserStory {
 	private Employee assignedDev;
 	@OneToOne
 	private Employee assignedTes;
-
+	
+	@NotEmpty(message="can not be Empty")
 	private String description;
 	
 	@ManyToOne
@@ -41,11 +42,11 @@ public class UserStory {
 	private Sprint sprint ;
 	
 
-	public long getUserStoryId() {
+	public Long getUserStoryId() {
 		return userStoryId;
 	}
 
-	public void setUserStoryId(long userStoryId) {
+	public void setUserStoryId(Long userStoryId) {
 		this.userStoryId = userStoryId;
 	}
 	

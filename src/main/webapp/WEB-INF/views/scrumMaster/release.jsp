@@ -1,4 +1,4 @@
-<%@ include file="../layouts/taglib.jsp"%>
+<%@ include file="../../layouts/taglib.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -6,7 +6,7 @@
 <body>
 	<table  width="1000">
 		<form:form modelAttribute="release" class="form-horizontal"
-			method="POST">
+			method="POST" enctype="utf8">
 			<tr>
 				<td>
 					<div class="form-group">

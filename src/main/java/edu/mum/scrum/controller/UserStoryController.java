@@ -31,8 +31,8 @@ public class UserStoryController {
 	/*display User Story form  */
 	
 	@RequestMapping(value="/createUserStory" ,method=RequestMethod.GET)
-	public String createUserStory(Model model){
-		model.addAttribute("userStory", new UserStory());
+	public String createUserStory(@ModelAttribute("userStory") UserStory userStory){
+		//model.addAttribute("userStory", new UserStory());
 //		@ModelAttribute("userStory") UserStory userStory
 		return "userStory";	
 	}
@@ -40,21 +40,23 @@ public class UserStoryController {
 	/* save User Story form */
 	
 	@RequestMapping(value="/createUserStory", method=RequestMethod.POST)
-	public String saveUserStory(Model model, @Valid @ModelAttribute("userStory") UserStory userStory ,@RequestParam("userStoryId") Long id
-			,BindingResult result){
+	public String saveUserStory(@Valid @ModelAttribute("userStory") UserStory userStory ,BindingResult result
+			,@RequestParam("userStoryId") Long id,Model model){
 		
 		if(result.hasErrors()){
 			return "userStory";
 		}
-			if(id==0 && !userStoryService.checkUserStoryName(userStory.getName())){
+		
+		
+			if(id == null && !userStoryService.checkUserStoryName(userStory.getName())){
 				model.addAttribute("exist", "User Story Name already Exists");
 	      	return "userStory";
 			}
-	
+			
 		ReleaseBacklog release =releaseService.getReleaseById(1);
 		userStory.setRelease(release);
 		
-		if (id!=0){
+		if (id!= null){
 			UserStory userStory1 = userStoryService.getUserStoryById(id);
 			userStory.setSprint(userStory1.getSprint());
 			userStory.setAssignedDev(userStory1.getAssignedDev());

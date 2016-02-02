@@ -1,7 +1,8 @@
-<%@ include file="../layouts/taglib.jsp"%>
+<%@ include file="../../layouts/taglib.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 	<c:if test="${not empty exist}">
-<div class="alert alert-danger"  >${exist}<br />
+<div class="alert alert-danger alert-dismissable fade in">
+<a href="#" class="close" data-dismiss="alert">&times;</a>${exist}<br />
 </div>
 </c:if>		
 				 <form:form method="post" action="${pageContext.request.contextPath}/createUserStory" enctype="multipart/form-data" 
@@ -32,21 +33,21 @@
 									</div>
 								</div>
 								 <input type="hidden" name=userStoryId value="${userStory.userStoryId}"/>
+					
 								 <input type="hidden" name=state value="new"/>
 					
 								 
-								 <%-- <input type="hidden" name=update value="${falsevalue}"/>
-			                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
-								
+								  <input type="hidden" name=update value="${falsevalue}"/>
+			                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
 								
 								<div class="form-group">
 									<div class="col-lg-offset-2 col-lg-10">
 										<input type="submit" id="btnAdd" class="btn btn-primary"
 											value="ADD" />
+											<a href="viewUserStory">
+						<button type="button"class="btn btn-default">Cancel</button> </a>
 									</div>
 								</div>
 
 						</form:form>
-					
-
 </html>

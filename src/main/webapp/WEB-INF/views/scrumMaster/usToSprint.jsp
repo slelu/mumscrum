@@ -1,6 +1,10 @@
-<%@ include file="../layouts/taglib.jsp"%>
+<%@ include file="../../layouts/taglib.jsp"%>
 <c:if test="${not empty emptyUS}">
-<div class="alert alert-success"  >${emptyUS}<br />
+<div class="alert alert-success alert-dismissable fade in">
+<a href="#" class="close" data-dismiss="alert">&times;</a>
+${emptyUS}<br />
+
+
 </div>
 </c:if>
 <div class="row">
@@ -40,13 +44,8 @@
 						<input type="hidden" name=id value="${userStory.userStoryId}"/>	
 						<input type="submit" id="btnAdd" class="btn btn-primary"
 						value="ADD" />
-						<%-- <a href ='<spring:url value="/addToSprint?id=${userStory.userStoryId}"/>'>
-							<button class="btn btn-primary btn-xs">
-								<span class="glyphicon glyphicon-pencil"></span>
-								ADD
-							</button>
-							</a> --%>
 						</td>
+				
 					</tr>
 					</form:form>
 					</c:forEach>
@@ -55,4 +54,7 @@
 					</div>
 					</div>
 					</div>
-		
+	</body>
+
+
+</html>	

@@ -30,8 +30,8 @@ public class ReleaseController {
 	}
 	
 	@RequestMapping(value="/createRelease", method=RequestMethod.POST)
-	public String saveRelease(@Valid @ModelAttribute("release") ReleaseBacklog release ,RedirectAttributes redirectAttributes,
-			BindingResult result){
+	public String saveRelease(@Valid @ModelAttribute("release") ReleaseBacklog release,
+			BindingResult result,RedirectAttributes redirectAttributes){
 		if(result.hasErrors()){
 			return "release";
 		}
