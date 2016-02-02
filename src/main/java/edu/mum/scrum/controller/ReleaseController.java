@@ -2,9 +2,12 @@ package edu.mum.scrum.controller;
 
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +30,12 @@ public class ReleaseController {
 	}
 	
 	@RequestMapping(value="/createRelease", method=RequestMethod.POST)
-	public String saveRelease(@ModelAttribute("release") ReleaseBacklog release ,RedirectAttributes redirectAttributes){
+	public String saveRelease(@Valid @ModelAttribute("release") ReleaseBacklog release,
+			BindingResult result,RedirectAttributes redirectAttributes){
+		if(result.hasErrors()){
+			return "release";
+		}
+		
 		releaseService.saveRelease(release);
 		redirectAttributes.addFlashAttribute("success" ,"Release Succesfully Created");
 		return "redirect:/viewRelease";
@@ -41,3 +49,4 @@ public class ReleaseController {
 		return "releaseList";
 	}
 }
+

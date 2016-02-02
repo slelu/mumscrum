@@ -1,4 +1,4 @@
-<%@ include file="../layouts/taglib.jsp"%>
+<%@ include file="../../layouts/taglib.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
@@ -33,6 +33,8 @@
 				<div class="col-lg-offset-2 col-lg-10">
 					<input type="submit" id="btnAdd" class="btn btn-primary"
 						value="ASSIGN" />
+						<a href="viewUserStory">
+						<button type="button"class="btn btn-default">Cancel</button> </a>
 				</div>
 			</div>
 

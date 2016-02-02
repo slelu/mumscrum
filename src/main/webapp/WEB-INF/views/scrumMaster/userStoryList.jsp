@@ -1,4 +1,4 @@
-<%@ include file="../layouts/taglib.jsp"%>
+<%@ include file="../../layouts/taglib.jsp"%>
 <div class="row">
 	<div class="col-md-12">
 		<div class="table-responsive">
@@ -59,3 +59,7 @@
 					</div>
 					</div>
 					</div>
+					</body>
+
+
+</html>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.mum.scrum.domain.Employee;
 import edu.mum.scrum.domain.UserStory;
+import edu.mum.scrum.repository.SprintRepository;
 import edu.mum.scrum.repository.UserStoryRepository;
 import edu.mum.scrum.service.UserStoryService;
 
@@ -18,6 +19,8 @@ public class UserStroyServiceImpl implements UserStoryService{
 	
 	@Autowired
 	UserStoryRepository userStoryRepository;
+	@Autowired
+	SprintRepository  sprintRepository;
 
 	@Override
 	public void saveUserStory(UserStory userStory) {
@@ -57,6 +60,25 @@ public class UserStroyServiceImpl implements UserStoryService{
 	public List<UserStory> getAllUnestimatedTesterUserStories(Employee tester) {
 		return userStoryRepository.findByAssignedTesAndTestEstimateNull(tester);
 	}
+	
+	public void saveUserStoryById(long userStoryId ,String sprintName){
+		
+		UserStory userStory = this.getUserStoryById(userStoryId);
+		userStory.setSprint(sprintRepository.findBySprintName(sprintName));
+		sprintRepository.findBySprintName(sprintName).setRelease(userStory.getRelease());
+		sprintRepository.save(sprintRepository.findBySprintName(sprintName));
+		userStory.setRelease(null);
+		userStoryRepository.save(userStory);
+		}
+
+		@Override
+		public boolean checkUserStoryName(String name) {
+			for(UserStory us:userStoryRepository.findAll()){
+				if(us.getName().equals(name))
+					return false;
+			}
+			return true;
+		}
 
 	@Override
 	public List<UserStory> getAllUserStoryBySprintId(long id) {
@@ -65,3 +87,4 @@ public class UserStroyServiceImpl implements UserStoryService{
 	}
 
 }
+

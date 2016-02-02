@@ -14,12 +14,17 @@ import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+
 @Entity
 public class UserStory {
 	@Id 
 	@GeneratedValue
-	private long userStoryId;
+	private Long userStoryId;
+	@NotEmpty(message="can not be Empty")
 	private String name;
+	@NotEmpty(message="can not be Empty")
 	private String priority;
 	@Min(1)
 	private Integer devEstimate;
@@ -31,7 +36,8 @@ public class UserStory {
 	private Employee assignedDev;
 	@OneToOne
 	private Employee assignedTes;
-
+	
+	@NotEmpty(message="can not be Empty")
 	private String description;
 	
 	@ManyToOne
@@ -44,11 +50,11 @@ public class UserStory {
 	private List<WorkLog> workLog;
 	
 
-	public long getUserStoryId() {
+	public Long getUserStoryId() {
 		return userStoryId;
 	}
 
-	public void setUserStoryId(long userStoryId) {
+	public void setUserStoryId(Long userStoryId) {
 		this.userStoryId = userStoryId;
 	}
 	
