@@ -6,7 +6,7 @@
 				<tr>
 					<th>Sprint Name</th>
 					<!-- <th>Sprint Start Date</th> -->
-					<th></th>
+					<!-- <th></th> -->
 				</tr>
 				<tbody>
 	<c:forEach var="sprint" items="${sprints}">

@@ -1,5 +1,7 @@
 package edu.mum.scrum.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +35,11 @@ public class ReleaseServiceImpl implements ReleaseService{
 		return 0;
 	}
 
-	/*@Override
-	public int deleteUserStoryById(Long id) {
-		// TODO Auto-generated method stub
-		return releaseRepository.deleteUserStoriesByUserStoryId(id);
+	@Override
+	public List<ReleaseBacklog> getAllRelease() {
+		
+		return releaseRepository.findAll();
 	}
-	*/
-	
+
 
 }

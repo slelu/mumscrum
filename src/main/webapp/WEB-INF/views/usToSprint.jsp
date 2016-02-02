@@ -1,4 +1,5 @@
 <%@ include file="../layouts/taglib.jsp"%>
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="table-responsive">
@@ -12,10 +13,12 @@
 					<th>Test Estimate</th>		
 					<th>Sprint</th>
 					<th></th>
-					<th></th>
 				</tr>
 				<tbody>
+		
 				<c:forEach var="userStory" items="${userStories}">
+				<form:form modelAttribute="userStory" class="form-horizontal" method="POST"
+							enctype="utf8">		
 					<tr>
 						<td>${userStory.name}</td>
 						<td>${userStory.description}</td>
@@ -23,24 +26,30 @@
 						<td>${userStory.state}</td>
 						<td>${userStory.devEstimate}</td>
 						<td>${userStory.testEstimate}</td>	
-						<td> <form:select name="sprint" path="">
+						<td> 
+						<form:select name="sprint" path="">
 					<form:option value="NONE" label="--- Select ---"/>
 						<c:forEach var="sprint" items="${sprints}">
-							<option>${sprint.name}</option>
+							<option>${sprint.sprintName}<option>
 						</c:forEach>
 					</form:select> </td>					
 						<td>
-						<a href ='<spring:url value="/addToSprint?id=${userStory.userStoryId}"/>'>
+						<input type="hidden" name=id value="${userStory.userStoryId}"/>	
+						<input type="submit" id="btnAdd" class="btn btn-primary"
+						value="ADD" />
+						<%-- <a href ='<spring:url value="/addToSprint?id=${userStory.userStoryId}"/>'>
 							<button class="btn btn-primary btn-xs">
 								<span class="glyphicon glyphicon-pencil"></span>
 								ADD
 							</button>
-							</a>
+							</a> --%>
 						</td>
 					</tr>
+					</form:form>
 					</c:forEach>
 					</tbody>
 					</table>
 					</div>
 					</div>
 					</div>
+					

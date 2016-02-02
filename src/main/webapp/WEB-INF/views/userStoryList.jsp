@@ -12,6 +12,7 @@
 					<th>Tester</th>
 					<th>Development Estimate</th>
 					<th>Test Estimate</th>
+					<th>Sprint Name</th>
 					<th></th>
 					<th></th>
 					<th></th>
@@ -27,6 +28,7 @@
 						<td>${userStory.assignedTes.firstname}</td>
 						<td>${userStory.devEstimate}</td>
 						<td>${userStory.testEstimate}</td>
+						<td>${userStory.sprint.sprintName}</td>
 						<td>
 						<a href ='<spring:url value="/editUserStory?id=${userStory.userStoryId}"/>'>
 							<button class="btn btn-primary btn-xs">

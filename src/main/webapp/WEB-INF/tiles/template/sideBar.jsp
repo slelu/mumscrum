@@ -34,7 +34,7 @@
 									<ul class="nav nav-third-level">
 										<li><a href="${pageContext.request.contextPath}/createRelease"><i class="fa fa-plus fa-fw"></i> New
 												Release</a></li>
-										<li><a href="#"><i class="fa fa-list-alt fa-fw"></i>
+										<li><a href="${pageContext.request.contextPath}/viewRelease"><i class="fa fa-list-alt fa-fw"></i>
 												Releases List</a></li>
 									</ul> <!-- /.nav-third-level --></li>
 								<li><a href="#">Sprint <span class="fa arrow"></span></a>

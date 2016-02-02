@@ -39,11 +39,10 @@
 	
 	<definition name="userStoryList" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
-		<put-attribute name="heading" value="User Story List" />
+		<put-attribute name="heading" value="User Stories" />
  		<put-attribute name="body" value="/WEB-INF/views/userStoryList.jsp" />
 	</definition>
 	
-
 	
 	<definition name="sprint" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
@@ -54,7 +53,7 @@
 	
 	<definition name="sprintList" extends="baseLayout">
 		<put-attribute name="title" value="Mum-Scrum" />
-		<put-attribute name="heading" value="Sprint List" />
+		<put-attribute name="heading" value="Sprints" />
  		<put-attribute name="body" value="/WEB-INF/views/sprintList.jsp" />
 	</definition>
 	
@@ -70,5 +69,16 @@
  		<put-attribute name="body" value="/WEB-INF/views/admin/employeeList.jsp" />
 	</definition>
 	
+	<definition name="usToSprint" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="User Stories in Release" />
+ 		<put-attribute name="body" value="/WEB-INF/views/usToSprint.jsp" />
+	</definition>
+	
+	<definition name="releaseList" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="Releases" />
+ 		<put-attribute name="body" value="/WEB-INF/views/releaseList.jsp" />
+	</definition>
 
 </tiles-definitions>
