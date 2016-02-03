@@ -1,9 +1,7 @@
 package edu.mum.scrum.controller;
 
 import java.util.ArrayList;
-
 import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -24,12 +22,15 @@ import edu.mum.scrum.service.UserStoryService;
 @Controller
 public class LoginController {
 
+	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login(){
 		return "login";
 	}
-/*	
-@Autowired
+
+
+/*	@Autowired
+
 	private RoleService roleService;
 	@Autowired
 	private EmployeeService employeeService;
@@ -152,5 +153,6 @@ public class LoginController {
 		Role roleHrAdmin = new Role();
 		roleHrAdmin.setRoleName("HR ADMIN");
 		roleService.saveRole(roleHrAdmin);
-	}*/
+	}
+	*/
 }

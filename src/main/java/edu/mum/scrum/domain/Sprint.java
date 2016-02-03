@@ -28,9 +28,21 @@ public class Sprint {
 
 	private String sprintName;
 	
-	@Temporal(TemporalType.DATE)
+	
 	private Date startDate;
 	
+	private Date endDate;
+	
+	
+	
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 
 	public String getSprintName() {
 		return sprintName;

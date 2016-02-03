@@ -1,16 +1,19 @@
 package edu.mum.scrum.domain;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class UserStory {
@@ -21,9 +24,7 @@ public class UserStory {
 	private String name;
 	@NotEmpty(message="can not be Empty")
 	private String priority;
-	@Min(1)
 	private Integer devEstimate;
-	@Min(1)
 	private Integer testEstimate;
 	private String state;
 	
@@ -40,7 +41,9 @@ public class UserStory {
 	
 	@ManyToOne
 	private Sprint sprint ;
-	
+	@Embedded
+	@ElementCollection(fetch=FetchType.EAGER)
+	private Set<WorkLog> workLog = new LinkedHashSet<WorkLog>();
 
 	public Long getUserStoryId() {
 		return userStoryId;
@@ -50,7 +53,6 @@ public class UserStory {
 		this.userStoryId = userStoryId;
 	}
 	
-
 	public String getName() {
 		return name;
 	}
@@ -134,5 +136,29 @@ public class UserStory {
 	
 	public boolean isEstimated(){
 		return this.devEstimate != null && this.testEstimate != null;
+	}
+
+	public Set<WorkLog> getWorkLog() {
+		return workLog;
+	}
+
+	public void setWorkLog(Set<WorkLog> workLog) {
+		this.workLog = workLog;
+	}
+	
+	public void addWorkLog(WorkLog workLog){
+		this.workLog.add(workLog);
+	}
+	
+	public void removeWorkLog(WorkLog workLog){
+		this.workLog.remove(workLog);
+	}
+	
+	public int getTotalWorkDone(){
+		int totalWorkDone = 0;
+		for (WorkLog workLog : this.workLog) {
+			totalWorkDone += workLog.getWorkHours();
+		}
+		return totalWorkDone;
 	}
 }

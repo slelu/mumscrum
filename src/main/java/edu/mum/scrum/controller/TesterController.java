@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.mum.scrum.domain.Employee;
 import edu.mum.scrum.domain.UserStory;
+import edu.mum.scrum.domain.WorkLog;
 import edu.mum.scrum.service.EmployeeService;
 import edu.mum.scrum.service.UserStoryService;
 
@@ -60,7 +61,6 @@ public class TesterController {
 		String view = "redirect:/testerUserStoryList";
 		if (!result.hasErrors()) {
 			UserStory u =userStoryService.getUserStoryById(testerUserStory.getUserStoryId());
-			u.setDevEstimate(testerUserStory.getDevEstimate());
 			u.setTestEstimate(testerUserStory.getTestEstimate());
 			if(u.isEstimated()){
 				u.setState("IN-PROGRESS");
@@ -72,10 +72,49 @@ public class TesterController {
 		}
 		return view;
 	}
+	/*.....................................................................................*/
+	@ModelAttribute("testerUserStoriesEstimated")
+	public List<UserStory> getAllEstimatedUserStories(Employee tester, Model model, Principal principal){
+		
+		Employee e = employeeService.findByUsername(principal.getName());
+		
+		List<UserStory> estimatedUserStories = userStoryService.getAllEstimatedTesterUserStories(e);
+		
+		if(estimatedUserStories.isEmpty()){
+			model.addAttribute("EMPTY_LIST_ESTIMATED", "You don't have user stories in progress!");
+		}
+		return estimatedUserStories;
+	}
 	
-	@RequestMapping(value="/testerNewWorklog", method=RequestMethod.GET)
-	public String newWorklog(){
+	@RequestMapping(value="/testerEstimatedUserStoryList", method=RequestMethod.GET)
+	public String estimatedUserStoryList(){
+		return "testerEstimatedUserStoryList";
+	}
+	
+	@RequestMapping(value="/addTesterWorklog", method=RequestMethod.GET)
+	public String newWorklog(@RequestParam Long userStoryId, Model model){
+		model.addAttribute("testerUserStoryWorklog", userStoryService.getUserStoryById(userStoryId));
+		model.addAttribute("testerNewWorklog", new WorkLog());
 		return "testerNewWorklog";
 	}
+	
+	@RequestMapping(value="/addTesterWorklog", method=RequestMethod.POST)
+	public String addWorklog(@Valid @ModelAttribute("testerUserStoryWorklog") UserStory testerUserStoryWorklog, @ModelAttribute("testerNewWorklog") WorkLog testerNewWorklog,BindingResult result, final RedirectAttributes redirectAttributes){
+		String view = "redirect:/testerEstimatedUserStoryList";
+		if (!result.hasErrors()) {
+			UserStory u =userStoryService.getUserStoryById(testerUserStoryWorklog.getUserStoryId());
+			u.addWorkLog(testerNewWorklog);
+			userStoryService.saveUserStory(u);
+			redirectAttributes.addFlashAttribute("SUCCESS_MESSAGE", "Worklog was added Successfully !");
+		} else {
+			view = "testerNewWorklog";
+		}
+		return view;
+	}
+	
+//	@RequestMapping(value="/testerNewWorklog", method=RequestMethod.GET)
+//	public String newWorklog(){
+//		return "testerNewWorklog";
+//	}
 	
 }

@@ -39,6 +39,8 @@ public class Employee {
 	@Embedded
 	@Valid
 	private Address address;
+	
+	
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<UserStory> userStories = new ArrayList<>();
 	
@@ -49,6 +51,7 @@ public class Employee {
 	private Set<Role> roles = new HashSet<>();
 	
 	
+
 	public List<Long> getRolesIds() {
 		return rolesIds;
 	}

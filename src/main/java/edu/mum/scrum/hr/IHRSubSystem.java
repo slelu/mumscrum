@@ -20,6 +20,5 @@ public interface IHRSubSystem {
 	Employee findByUsername(String username);
 	boolean checkUserName(String string);
 
-
-
 }
+

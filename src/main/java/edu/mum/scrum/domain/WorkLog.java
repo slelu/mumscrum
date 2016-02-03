@@ -1,22 +1,22 @@
 package edu.mum.scrum.domain;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
-//@Entity
+import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Embeddable
 public class WorkLog {
-	private Long workLogId;
-	private LocalDateTime time;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date time = new Date();
 	private Integer workHours;
-	public Long getWorkLogId() {
-		return workLogId;
-	}
-	public void setWorkLogId(Long workLogId) {
-		this.workLogId = workLogId;
-	}
-	public LocalDateTime getTime() {
+
+	public Date getTime() {
 		return time;
 	}
-	public void setTime(LocalDateTime time) {
+	
+	public void setTime(Date time) {
 		this.time = time;
 	}
 	public Integer getWorkHours() {
@@ -24,6 +24,29 @@ public class WorkLog {
 	}
 	public void setWorkHours(Integer workHours) {
 		this.workHours = workHours;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((time == null) ? 0 : time.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		WorkLog other = (WorkLog) obj;
+		if (time == null) {
+			if (other.time != null)
+				return false;
+		} else if (!time.equals(other.time))
+			return false;
+		return true;
 	}
 	
 	
