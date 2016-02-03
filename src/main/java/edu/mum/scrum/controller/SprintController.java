@@ -36,25 +36,12 @@ public class SprintController {
 	}
 	
 	@RequestMapping(value="/createSprint", method=RequestMethod.POST)
-	public String saveSprint(@ModelAttribute("sprint") Sprint sprint ,RedirectAttributes redirectAttributes){
+	public String saveSprint(@ModelAttribute("sprint") Sprint sprint ,@RequestParam("sprintId") Long id,Model model){
 		
-		/*List <Sprint> sprints=sprintService.getAllSprints();
-		
-		if(sprints.isEmpty()){
-			sprintService.saveSprint(sprint);
-			redirectAttributes.addFlashAttribute("success" ,"Sprint Succesfully Created");
+		if(id==0&&!sprintService.checkSprintName(sprint.getSprintName())){
+			model.addAttribute("exist", "Sprint Name already Exists");
+      	return "sprint";
 		}
-		else{
-		for(Sprint s:sprints){
-			if(s.getSprintName().equals(sprint.getSprintName())){
-				redirectAttributes.addFlashAttribute("success" ,"Sprint with this name already exists!!!");
-			}
-			else{
-				sprintService.saveSprint(sprint);
-				redirectAttributes.addFlashAttribute("success" ,"Sprint Succesfully Created");
-			}
-		}
-		}*/
 		sprintService.saveSprint(sprint);
 		 return "redirect:/viewSprint";
 	}
@@ -66,7 +53,7 @@ public class SprintController {
 	}
 	
 	@RequestMapping(value = "/editSprint", method=RequestMethod.GET)
-	public String editUserStory(Sprint sprint ,Model model,@RequestParam("id") Long id) {
+	public String editUserStory(Sprint sprint ,Model model,@RequestParam("sprintId") Long id) {
 		
 		model.addAttribute("sprint",sprintService.getSprintById(id) );
 		

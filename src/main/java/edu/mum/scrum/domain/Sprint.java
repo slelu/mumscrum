@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -48,7 +49,7 @@ public class Sprint {
 		this.startDate = startDate;
 	}
 
-	@OneToMany(mappedBy="sprint")
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="sprint")
 	private List<UserStory> userStories;
 	
 	@ManyToOne

@@ -17,6 +17,8 @@ public interface IHRSubSystem {
 	void disableEmployee(Employee employee);
 	void updateEmployee(Employee employee);
 	Employee getEmployeeByName(String name);
+	Employee findByUsername(String username);
+	boolean checkUserName(String string);
 
 
 

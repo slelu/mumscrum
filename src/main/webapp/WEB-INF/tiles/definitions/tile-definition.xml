@@ -114,4 +114,16 @@
 		<put-attribute name="heading" value="Employees" />
  		<put-attribute name="body" value="/WEB-INF/views/admin/employeeList.jsp" />
 	</definition>
+	
+	<definition name="profile" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="My Profile" />
+ 		<put-attribute name="body" value="/WEB-INF/views/profile.jsp" />
+	</definition>
+	<definition name="updateProfile" extends="baseLayout">
+		<put-attribute name="title" value="Mum-Scrum" />
+		<put-attribute name="heading" value="Update Profile" />
+ 		<put-attribute name="body" value="/WEB-INF/views/updateProfile.jsp" />
+	</definition>
+	
 </tiles-definitions>

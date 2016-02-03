@@ -1,5 +1,10 @@
 <%@ include file="../../layouts/taglib.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<c:if test="${not empty exist}">
+<div class="alert alert-danger alert-dismissable fade in">
+<a href="#" class="close" data-dismiss="alert">&times;</a>${exist}<br />
+</div>
+</c:if>
 			
 				 <form:form method="post" action="${pageContext.request.contextPath}/createSprint?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data" 
 				          commandName="sprint" class="form-horizontal" role="form">

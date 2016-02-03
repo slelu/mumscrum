@@ -7,8 +7,11 @@
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Phone Number </th>	
-					<th> </th>
-					<th> </th>
+					<th>Employee Role </th>
+					<th>Enabled</th>
+					<th></th>
+					<th></th>
+					<th></th>
 				</tr>
 				<tbody>
 				<c:forEach var="employee" items="${employees}">
@@ -16,10 +19,14 @@
 						<td>${employee.firstname}</td>
 						<td>${employee.lastname}</td>
 						<td>${employee.phoneNumber}</td>
-						
-						
+						<td><ul>
+						<c:forEach var="role" items="${employee.roles}">
+						    <li>${role.roleName}</li>
+						</c:forEach> </ul> </td>
+					
+						<td>${employee.enabled}</td>
 						<td>
-						<a href ='<spring:url value="/editEmployee?id=${employee.employeeId}"/>'>
+						<a href ='<spring:url value="/editEmployee?employeeId=${employee.employeeId}"/>'>
 							<button class="btn btn-primary btn-xs">
 								<span class="glyphicon glyphicon-pencil"></span>
 								EDIT

@@ -7,11 +7,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Embeddable
 public class Address {
-	
+	@NotEmpty(message="cannot be Empty")
 	private String street;
+	@NotEmpty(message="cannot be Empty")
 	private String zipcode;
+	@NotEmpty(message="cannot be Empty")
 	private String city;
+	@NotEmpty(message="cannot be Empty")
 	private String country;
+	@NotEmpty(message="cannot be Empty")
 	private String state;
 	
 	public String getState() {

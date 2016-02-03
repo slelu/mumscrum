@@ -16,5 +16,6 @@ public interface EmployeeService {
 	void updateEmployee(Employee employee);
 	Employee getEmployeeByName(String name);
 	Employee findByUsername(String username);
+	boolean checkUserName(String username);
 
 }

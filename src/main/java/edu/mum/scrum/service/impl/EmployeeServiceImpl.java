@@ -104,5 +104,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		employeeRepository.save(employee);
 	}
+	@Override
+	public boolean checkUserName(String username) {
+		
+		for(Employee e:employeeRepository.findAll()){
+		if(e.getUsername().equals(username))
+			return false;
+		}
+		return true;
+	}
 
 }
