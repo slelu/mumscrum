@@ -1,21 +1,23 @@
 package edu.mum.scrum.controller;
 
-import java.util.List;
-import java.util.Set;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import edu.mum.scrum.domain.ReleaseBacklog;
 import edu.mum.scrum.domain.Sprint;
-import edu.mum.scrum.domain.UserStory;
 import edu.mum.scrum.service.ReleaseService;
 import edu.mum.scrum.service.SprintService;
 
@@ -36,25 +38,15 @@ public class SprintController {
 	}
 	
 	@RequestMapping(value="/createSprint", method=RequestMethod.POST)
-	public String saveSprint(@ModelAttribute("sprint") Sprint sprint ,RedirectAttributes redirectAttributes){
+	public String saveSprint(@Valid @ModelAttribute("sprint") Sprint sprint ,BindingResult result,@RequestParam("sprintId") Long id,Model model){
 		
-		/*List <Sprint> sprints=sprintService.getAllSprints();
-		
-		if(sprints.isEmpty()){
-			sprintService.saveSprint(sprint);
-			redirectAttributes.addFlashAttribute("success" ,"Sprint Succesfully Created");
+		if(result.hasErrors()){
+			return "sprint";
 		}
-		else{
-		for(Sprint s:sprints){
-			if(s.getSprintName().equals(sprint.getSprintName())){
-				redirectAttributes.addFlashAttribute("success" ,"Sprint with this name already exists!!!");
-			}
-			else{
-				sprintService.saveSprint(sprint);
-				redirectAttributes.addFlashAttribute("success" ,"Sprint Succesfully Created");
-			}
+		if(id==0&&!sprintService.checkSprintName(sprint.getSprintName())){
+			model.addAttribute("exist", "Sprint Name already Exists");
+      	return "sprint";
 		}
-		}*/
 		sprintService.saveSprint(sprint);
 		 return "redirect:/viewSprint";
 	}
@@ -66,7 +58,7 @@ public class SprintController {
 	}
 	
 	@RequestMapping(value = "/editSprint", method=RequestMethod.GET)
-	public String editUserStory(Sprint sprint ,Model model,@RequestParam("id") Long id) {
+	public String editUserStory(Sprint sprint ,Model model,@RequestParam("sprintId") Long id) {
 		
 		model.addAttribute("sprint",sprintService.getSprintById(id) );
 		
@@ -79,6 +71,11 @@ public class SprintController {
 		return "sprintList";
 	}*/
 	
-
+	@InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+             SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+             dateFormat.setLenient(false);
+             webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+         }
 
 }

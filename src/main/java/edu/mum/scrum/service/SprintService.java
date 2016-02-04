@@ -12,5 +12,6 @@ public interface SprintService {
 	public int getTotalEstimate(Long id);
 	public Sprint searchSprintByName(String name);
 	public void deleteSprintById(Long id);
+	boolean checkSprintName(String name);
 
 }

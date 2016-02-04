@@ -25,6 +25,7 @@
 						<div class="col-sm-4">
 							<form:input class="form-control input-sm" id="datepicker1"
 								path="startDate" value="" />
+								<form:errors path="startDate" cssClass="text-danger" />  
 								
 						</div>
 					</div>
@@ -48,6 +49,7 @@
 						<div class="col-sm-4">
 							<form:input class="form-control input-sm" id="datepicker2"
 								path="endDate" value="" />
+								<form:errors path="endDate" cssClass="text-danger" />  
 						</div>
 					</div>
 				</td>

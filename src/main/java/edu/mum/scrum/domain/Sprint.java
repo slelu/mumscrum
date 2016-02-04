@@ -10,9 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
@@ -21,12 +24,12 @@ public class Sprint {
 	@GeneratedValue
 	private long sprintId;
 	
-
+	@NotEmpty(message="can not be Empty")
 	private String sprintName;
 	
-	
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
-	
+	@Temporal(TemporalType.DATE)
 	private Date endDate;
 	
 	

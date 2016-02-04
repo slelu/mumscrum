@@ -32,8 +32,7 @@ public class UserStoryController {
 	
 	@RequestMapping(value="/createUserStory" ,method=RequestMethod.GET)
 	public String createUserStory(@ModelAttribute("userStory") UserStory userStory){
-		//model.addAttribute("userStory", new UserStory());
-//		@ModelAttribute("userStory") UserStory userStory
+		
 		return "userStory";	
 	}
 	
@@ -45,8 +44,7 @@ public class UserStoryController {
 		
 		if(result.hasErrors()){
 			return "userStory";
-		}
-		
+		}	
 		
 			if(id == null && !userStoryService.checkUserStoryName(userStory.getName())){
 				model.addAttribute("exist", "User Story Name already Exists");
@@ -103,7 +101,7 @@ public class UserStoryController {
 	@RequestMapping(value="/assignUserStory" ,method=RequestMethod.GET)
 	public String assignUserStory(@ModelAttribute("userStory")UserStory userStory , @RequestParam("id") Long id ,Model model){
 		
-		model.addAttribute("userStories",userStoryService.getUserStoryById(id));
+		model.addAttribute("userStory",userStoryService.getUserStoryById(id));
 		model.addAttribute("developers",subSystemFacade.getAvailableDev());
 		model.addAttribute("testers",subSystemFacade.getAvailableTesters());
 		
@@ -153,5 +151,5 @@ public class UserStoryController {
 		return "redirect:/addToSprint";
 		
 	}
-	
+
 }

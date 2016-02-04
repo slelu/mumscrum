@@ -15,21 +15,30 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.validation.Valid;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Employee {
 	@Id
 	@GeneratedValue
 	private Long employeeId;
+	@NotEmpty(message="cannot be Empty")
 	private String firstname;
+	@NotEmpty(message="cannot be Empty")
 	private String lastname;
+	@NotEmpty(message="cannot be Empty")
 	private String username;
+	@NotEmpty(message="cannot be Empty")
 	private String password;
+	//@NotEmpty(message="cannot be Empty")
 	private String phoneNumber;
 	@Transient
 	private String passwordConfirm;
 	private boolean enabled;
 	@Embedded
+	@Valid
 	private Address address;
 	
 	

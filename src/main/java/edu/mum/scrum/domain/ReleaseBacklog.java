@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -21,7 +23,9 @@ public class ReleaseBacklog {
 	private String name;
 	@NotEmpty(message="can not be Empty")
 	private String description;
+	@Temporal(TemporalType.DATE)
 	private Date startDate ;
+	@Temporal(TemporalType.DATE)
 	private Date endDate;
 	
 	@OneToMany(fetch = FetchType.EAGER,mappedBy="release")

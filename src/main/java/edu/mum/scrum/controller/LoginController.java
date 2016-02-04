@@ -27,7 +27,10 @@ public class LoginController {
 	public String login(){
 		return "login";
 	}
-	@Autowired
+
+
+	/*@Autowired
+
 	private RoleService roleService;
 	@Autowired
 	private EmployeeService employeeService;
@@ -151,5 +154,5 @@ public class LoginController {
 		roleHrAdmin.setRoleName("HR ADMIN");
 		roleService.saveRole(roleHrAdmin);
 	}
-	
+	*/
 }

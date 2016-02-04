@@ -35,7 +35,7 @@ public class DeveloperController {
 	@ModelAttribute("developerUserStoriesToBeEstimated")
 	public List<UserStory> getAllUnestimatedUserStories(Employee developer,Model model, Principal principal){
 		
-		Employee dev = ihrSubSystem.getEmployeeByUsername(principal.getName());
+		Employee dev = ihrSubSystem.findByUsername(principal.getName());
 
 		List<UserStory> unestimatedUserStories = userStoryService.getAllUnestimatedDeveloperUserStories(dev);
 		
@@ -76,7 +76,7 @@ public class DeveloperController {
 	@ModelAttribute("developerUserStoriesEstimated")
 	public List<UserStory> getAllEstimatedUserStories(Employee developer, Model model, Principal principal){
 		
-		Employee e = ihrSubSystem.getEmployeeByUsername(principal.getName());
+		Employee e = ihrSubSystem.findByUsername(principal.getName());
 		
 		List<UserStory> estimatedUserStories = userStoryService.getAllEstimatedDeveloperUserStories(e);
 		

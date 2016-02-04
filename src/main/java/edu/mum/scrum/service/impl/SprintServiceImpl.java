@@ -66,6 +66,16 @@ public class SprintServiceImpl implements SprintService {
 		sprintRepository.delete(id);
 		
 	}
+
+	@Override
+	public boolean checkSprintName(String name) {
+		for(Sprint sp:sprintRepository.findAll() ){
+			if(sp.getSprintName().equals(name))
+				return false;
+		}
+		
+		return true;
+	}
 	
 	
 

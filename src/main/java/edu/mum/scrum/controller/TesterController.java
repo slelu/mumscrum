@@ -35,7 +35,7 @@ public class TesterController {
 	@ModelAttribute("testerUserStoriesToBeEstimated")
 	public List<UserStory> getAllUnestimatedUserStories(Employee developer, Model model, Principal principal){
 		
-		Employee e = ihrSubSystem.getEmployeeByUsername(principal.getName().toLowerCase());
+		Employee e = ihrSubSystem.findByUsername(principal.getName().toLowerCase());
 
 		List<UserStory> unestimatedUserStories = userStoryService.getAllUnestimatedTesterUserStories(e);
 		
@@ -76,7 +76,7 @@ public class TesterController {
 	@ModelAttribute("testerUserStoriesEstimated")
 	public List<UserStory> getAllEstimatedUserStories(Employee tester, Model model, Principal principal){
 		
-		Employee e = ihrSubSystem.getEmployeeByUsername(principal.getName());
+		Employee e = ihrSubSystem.findByUsername(principal.getName());
 		
 		List<UserStory> estimatedUserStories = userStoryService.getAllEstimatedTesterUserStories(e);
 		

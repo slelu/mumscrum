@@ -34,7 +34,7 @@
 								</div>
 								 <input type="hidden" name=userStoryId value="${userStory.userStoryId}"/>
 					
-								 <input type="hidden" name=state value="new"/>
+								 <input type="hidden" name=state value="NEW"/>
 					
 								 
 								  <input type="hidden" name=update value="${falsevalue}"/>
