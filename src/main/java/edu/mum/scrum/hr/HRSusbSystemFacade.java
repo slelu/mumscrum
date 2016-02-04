@@ -68,6 +68,11 @@ public class HRSusbSystemFacade implements IHRSubSystem{
 		
 		return employeeService.getEmployeeByName(name);
 	}
+
+	@Override
+	public Employee getEmployeeByUsername(String username) {
+		return employeeService.findByUsername(username);
+	}
 	
 	
 	

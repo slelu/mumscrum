@@ -4,18 +4,15 @@ package edu.mum.scrum.domain;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-
-import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 
 @Entity
@@ -60,7 +57,8 @@ public class Sprint {
 		this.startDate = startDate;
 	}
 
-	@OneToMany(mappedBy="sprint")
+	@OneToMany(mappedBy="sprint", fetch=FetchType.EAGER)
+	@Fetch (FetchMode.SELECT)
 	private List<UserStory> userStories;
 	
 	@ManyToOne
@@ -90,5 +88,12 @@ public class Sprint {
 	public void setRelease(ReleaseBacklog release) {
 		this.release = release;
 	}
-
+	
+	public Integer getTotalEstimate(){
+		Integer estimate = 0;
+		for (UserStory userStory: userStories) {
+			estimate += userStory.getDevEstimate() + userStory.getTestEstimate();
+		}
+		return estimate;
+	}
 }

@@ -10,7 +10,7 @@
 	<http pattern="/resources/**" security="none" />
 
 	<http use-expressions="true">
-		<intercept-url pattern="/createEmployee" access="hasRole('HR ADMIN')"/>
+		<!-- <intercept-url pattern="/createEmployee" access="hasRole('HR ADMIN')"/>
 		<intercept-url pattern="/editEmployee" access="hasRole('HR ADMIN')"/>
 		<intercept-url pattern="/employeeList" access="hasRole('HR ADMIN')"/>
 		<intercept-url pattern="/deleteEmployee/{id}" access="hasRole('HR ADMIN')"/>
@@ -33,7 +33,7 @@
 		<intercept-url pattern="/testerUserStoryList" access="hasRole('TESTER')"/>
 		<intercept-url pattern="/testerEstimate" access="hasRole('TESTER')"/>
 		<intercept-url pattern="/testerEstimatedUserStoryList" access="hasRole('TESTER')"/>
-		<intercept-url pattern="/addTesterWorklog" access="hasRole('TESTER')"/>
+		<intercept-url pattern="/addTesterWorklog" access="hasRole('TESTER')"/> -->
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 		<form-login login-page="/login"
 			authentication-failure-url="/login?error=1" 

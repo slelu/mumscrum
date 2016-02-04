@@ -1,5 +1,6 @@
 package edu.mum.scrum.domain;
 
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -12,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -44,6 +47,16 @@ public class UserStory {
 	@Embedded
 	@ElementCollection(fetch=FetchType.EAGER)
 	private Set<WorkLog> workLog = new LinkedHashSet<WorkLog>();
+	@Temporal(TemporalType.DATE)
+	private Date dateAddedToSprint;
+	
+	public Date getDateAddedToSprint() {
+		return dateAddedToSprint;
+	}
+
+	public void setDateAddedToSprint(Date dateAddedToSprint) {
+		this.dateAddedToSprint = dateAddedToSprint;
+	}
 
 	public Long getUserStoryId() {
 		return userStoryId;

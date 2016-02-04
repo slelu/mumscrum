@@ -10,13 +10,22 @@
 						<form:form role="form" commandName="testerNewWorklog" method="POST"
 							cssClass="form-horizontal">
 							
-							<security:authorize access="hasRole('DEVELOPER')">
+							<security:authorize access="hasRole('TESTER')">
 								<div class="form-group">
-									<label for="estimateDevelopment" class="col-sm-3 control-label">Work Done (in HOURS)</label>
+									<label for="workHours" class="col-sm-3 control-label">Work Done (in HOURS)</label>
 									<div class="col-sm-4">
 										<form:input class="form-control input-sm"
-											id="estimateDevelopment" path="workHours" />
+											id="workHours" path="workHours" />
 										<form:errors path="workHours"
+											cssClass="has-error alert-danger" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="remainingHours" class="col-sm-3 control-label">Work Remaining (in HOURS)</label>
+									<div class="col-sm-4">
+										<form:input class="form-control input-sm"
+											id="remainingHours" path="remainingHours" />
+										<form:errors path="remainingHours"
 											cssClass="has-error alert-danger" />
 									</div>
 								</div>
@@ -24,7 +33,7 @@
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-3">
 									<button type="submit" class="btn btn-primary">Add</button>
-									<a href="developerEstimatedUserStoryList"><button type="button"
+									<a href="testerEstimatedUserStoryList"><button type="button"
 											class="btn btn-default">Cancel</button></a>
 								</div>
 							</div>

@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.mum.scrum.domain.Employee;
 import edu.mum.scrum.domain.UserStory;
 import edu.mum.scrum.domain.WorkLog;
-import edu.mum.scrum.service.EmployeeService;
+import edu.mum.scrum.hr.IHRSubSystem;
 import edu.mum.scrum.service.UserStoryService;
 
 /**
@@ -30,12 +30,12 @@ public class TesterController {
 	@Autowired
 	private UserStoryService userStoryService;
 	
-	@Autowired EmployeeService employeeService;
+	@Autowired IHRSubSystem ihrSubSystem;
 	
 	@ModelAttribute("testerUserStoriesToBeEstimated")
 	public List<UserStory> getAllUnestimatedUserStories(Employee developer, Model model, Principal principal){
 		
-		Employee e = employeeService.findByUsername(principal.getName().toLowerCase());
+		Employee e = ihrSubSystem.getEmployeeByUsername(principal.getName().toLowerCase());
 
 		List<UserStory> unestimatedUserStories = userStoryService.getAllUnestimatedTesterUserStories(e);
 		
@@ -76,7 +76,7 @@ public class TesterController {
 	@ModelAttribute("testerUserStoriesEstimated")
 	public List<UserStory> getAllEstimatedUserStories(Employee tester, Model model, Principal principal){
 		
-		Employee e = employeeService.findByUsername(principal.getName());
+		Employee e = ihrSubSystem.getEmployeeByUsername(principal.getName());
 		
 		List<UserStory> estimatedUserStories = userStoryService.getAllEstimatedTesterUserStories(e);
 		
@@ -99,7 +99,7 @@ public class TesterController {
 	}
 	
 	@RequestMapping(value="/addTesterWorklog", method=RequestMethod.POST)
-	public String addWorklog(@Valid @ModelAttribute("testerUserStoryWorklog") UserStory testerUserStoryWorklog, @ModelAttribute("testerNewWorklog") WorkLog testerNewWorklog,BindingResult result, final RedirectAttributes redirectAttributes){
+	public String addWorklog(@ModelAttribute("testerUserStoryWorklog") UserStory testerUserStoryWorklog, @Valid @ModelAttribute("testerNewWorklog") WorkLog testerNewWorklog,BindingResult result, final RedirectAttributes redirectAttributes){
 		String view = "redirect:/testerEstimatedUserStoryList";
 		if (!result.hasErrors()) {
 			UserStory u =userStoryService.getUserStoryById(testerUserStoryWorklog.getUserStoryId());
@@ -111,10 +111,5 @@ public class TesterController {
 		}
 		return view;
 	}
-	
-//	@RequestMapping(value="/testerNewWorklog", method=RequestMethod.GET)
-//	public String newWorklog(){
-//		return "testerNewWorklog";
-//	}
 	
 }

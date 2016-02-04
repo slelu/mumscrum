@@ -24,7 +24,7 @@
 					<c:when test="${EMPTY_LIST != null}">
 						<div class="alert alert-info" role="alert">
 							<c:out value="${EMPTY_LIST}" />
-							<a href="testerNewWorklog" class="alert-link">Add work logs?</a>
+							<a href="testerEstimatedUserStoryList" class="alert-link">Add work logs?</a>
 						</div>
 					</c:when>
 					<c:otherwise>

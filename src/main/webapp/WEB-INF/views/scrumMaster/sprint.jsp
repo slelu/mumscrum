@@ -11,13 +11,21 @@
 											value="${sprint.sprintName}" />
 									</div>
 								</div>
-								<%-- <div class="form-group">
+								<div class="form-group">
 									<label class="control-label col-sm-3">Start Date:</label>
 									<div class="col-sm-4">
-										<form:input class="form-control input-sm" name="startDate" path="startDate" 
+										<form:input class="form-control input-sm" id="datepicker1" path="startDate" 
 											 value="${sprint.startDate}" />
 									</div>
-								</div> --%>	
+								</div>	
+								
+								<div class="form-group">
+									<label class="control-label col-sm-3">End Date:</label>
+									<div class="col-sm-4">
+										<form:input class="form-control input-sm" id="datepicker2" path="endDate" 
+											 value="${sprint.endDate}" />
+									</div>
+								</div>	
 								 <input type="hidden" name=sprintId value="${sprint.sprintId}"/>	
 								<div class="form-group">
 									<div class="col-lg-offset-2 col-lg-10">

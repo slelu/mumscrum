@@ -71,7 +71,7 @@
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
 						Charts<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="flot.html">Sprint 1</a></li>
+						<li><a href="ViewBurnDownChart?sprintID=1">Sprint 1</a></li>
 						<li><a href="morris.html">Sprint 2</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 			</security:authorize>

@@ -34,7 +34,7 @@ public class LoginController {
 	@Autowired
 	private UserStoryService userStoryService;
 	
-@PostConstruct
+//@PostConstruct
 	public void initialize(){
 		initializeRoles();
 		initializeEmployees();

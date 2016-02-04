@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.mum.scrum.domain.Employee;
 import edu.mum.scrum.domain.UserStory;
 import edu.mum.scrum.domain.WorkLog;
-import edu.mum.scrum.service.EmployeeService;
+import edu.mum.scrum.hr.IHRSubSystem;
 import edu.mum.scrum.service.UserStoryService;
 
 /**
@@ -30,14 +30,14 @@ public class DeveloperController {
 	@Autowired
 	private UserStoryService userStoryService;
 	
-	@Autowired EmployeeService employeeService;
+	@Autowired IHRSubSystem ihrSubSystem;
 	
 	@ModelAttribute("developerUserStoriesToBeEstimated")
 	public List<UserStory> getAllUnestimatedUserStories(Employee developer,Model model, Principal principal){
 		
-		Employee e = employeeService.findByUsername(principal.getName());
+		Employee dev = ihrSubSystem.getEmployeeByUsername(principal.getName());
 
-		List<UserStory> unestimatedUserStories = userStoryService.getAllUnestimatedDeveloperUserStories(e);
+		List<UserStory> unestimatedUserStories = userStoryService.getAllUnestimatedDeveloperUserStories(dev);
 		
 		if(unestimatedUserStories.isEmpty()){
 			model.addAttribute("EMPTY_LIST_UNESTIMATED", "You don't have un-eastimated user stories!");
@@ -76,7 +76,7 @@ public class DeveloperController {
 	@ModelAttribute("developerUserStoriesEstimated")
 	public List<UserStory> getAllEstimatedUserStories(Employee developer, Model model, Principal principal){
 		
-		Employee e = employeeService.findByUsername(principal.getName());
+		Employee e = ihrSubSystem.getEmployeeByUsername(principal.getName());
 		
 		List<UserStory> estimatedUserStories = userStoryService.getAllEstimatedDeveloperUserStories(e);
 		
@@ -99,7 +99,7 @@ public class DeveloperController {
 	}
 	
 	@RequestMapping(value="/addDeveloperWorklog", method=RequestMethod.POST)
-	public String addWorklog(@Valid @ModelAttribute("developerUserStoryWorklog") UserStory developerUserStoryWorklog, @ModelAttribute("developerNewWorklog") WorkLog developerNewWorklog,BindingResult result, final RedirectAttributes redirectAttributes){
+	public String addWorklog(@ModelAttribute("developerUserStoryWorklog") UserStory developerUserStoryWorklog, @Valid @ModelAttribute("developerNewWorklog") WorkLog developerNewWorklog,BindingResult result, final RedirectAttributes redirectAttributes){
 		String view = "redirect:/developerEstimatedUserStoryList";
 		if (!result.hasErrors()) {
 			UserStory u =userStoryService.getUserStoryById(developerUserStoryWorklog.getUserStoryId());
@@ -111,11 +111,4 @@ public class DeveloperController {
 		}
 		return view;
 	}
-	/*..........................................................................................
-	@RequestMapping(value="/developerNewWorklog", method=RequestMethod.GET)
-	public String newWorklog(){
-		return "developerNewWorklog";
-	}
-	
-	*/
 }

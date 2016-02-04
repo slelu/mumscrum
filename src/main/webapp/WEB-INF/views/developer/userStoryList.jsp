@@ -24,7 +24,7 @@
 					<c:when test="${EMPTY_LIST_UNESTIMATED != null}">
 						<div class="alert alert-info" role="alert">
 							<c:out value="${EMPTY_LIST_UNESTIMATED}" />
-							<a href="developerNewWorklog" class="alert-link">Add work logs?</a>
+							<a href="developerEstimatedUserStoryList" class="alert-link">Add work logs?</a>
 						</div>
 					</c:when>
 					<c:otherwise>

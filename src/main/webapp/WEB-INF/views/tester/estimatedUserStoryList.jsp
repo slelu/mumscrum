@@ -33,7 +33,7 @@
 									<th>Name</th>
 									<th>Description</th>
 									<th>Status</th>
-									<security:authorize access="hasRole('DEVELOPER')">
+									<security:authorize access="hasRole('TESTER')">
 									<th>Testing Effort</th>
 									</security:authorize>
 									<th></th>
