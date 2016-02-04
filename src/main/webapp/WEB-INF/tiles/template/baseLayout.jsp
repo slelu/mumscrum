@@ -124,8 +124,14 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	
 	<script>
 	$(function() {
-		$("#datepicker1").datepicker();
-		$("#datepicker2").datepicker();
+		$("#datepicker1").datepicker({
+			format: 'mm/dd/yyy',
+		    startDate: '-3d'
+		});
+		$("#datepicker2").datepicker({
+			format: 'mm/dd/yyy',
+		    startDate: '-3d'
+		});
 	});
 </script>
 

@@ -9,6 +9,7 @@
 									<div class="col-sm-4">
 										<form:input class="form-control input-sm" id="name" path="sprintName"
 											value="${sprint.sprintName}" />
+											<form:errors path="sprintName" cssClass="text-danger" />
 									</div>
 								</div>
 								<div class="form-group">

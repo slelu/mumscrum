@@ -62,7 +62,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	@Override
 	public Employee getEmployeeById(Long employeeId) {
-		return employeeRepository.findByEmployeeId(employeeId);
+		return employeeRepository.findOne(employeeId);
 	}
 	@Override
 	public Employee findByUsername(String username) {
@@ -75,20 +75,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 
-	@Override
-	public Employee getEmployee(Long id) {
-		
-		return employeeRepository.findOne(id);
-	}
-
-
-	@Override
-	public void deleteEmployeeById(Long id) {
-		
-		employeeRepository.deleteByEmployeeId(id);
-		
-	}
-
 
 	@Override
 	public List<Employee> getAllEmployees() {
@@ -96,7 +82,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	@Override
 	public void disableEmployee(Employee employee) {
-		
+		employee.setEnabled(false);
 		employeeRepository.save(employee);
 		
 	}

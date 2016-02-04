@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import edu.mum.scrum.domain.Employee;
+import edu.mum.scrum.domain.Role;
 import edu.mum.scrum.service.EmployeeService;
+import edu.mum.scrum.service.RoleService;
 
 
 
@@ -17,6 +19,8 @@ public class HRSusbSystemFacade implements IHRSubSystem{
 	
 	@Autowired 
 	EmployeeService employeeService;
+	@Autowired 
+	RoleService roleService;
 	
 
 	@Override
@@ -25,14 +29,9 @@ public class HRSusbSystemFacade implements IHRSubSystem{
 	}
 
 	@Override
-	public Employee getEmployee(Long id) {
+	public Employee getEmployeeById(Long id) {
 		
-		return employeeService.getEmployee(id);
-	}
-
-	@Override
-	public void deleteEmployeeById(Long id) {
-		employeeService.deleteEmployeeById(id);
+		return employeeService.getEmployeeById(id);
 	}
 
 	@Override
@@ -54,11 +53,6 @@ public class HRSusbSystemFacade implements IHRSubSystem{
 	}
 
 	@Override
-	public void disableEmployee(Employee employee) {
-		employeeService.disableEmployee(employee);
-	}
-
-	@Override
 	public void updateEmployee(Employee employee) {
 		employeeService.updateEmployee(employee);
 	}
@@ -76,11 +70,17 @@ public class HRSusbSystemFacade implements IHRSubSystem{
 	}
 
 	@Override
-	public boolean checkUserName(String string) {
-		// TODO Auto-generated method stub
-		return employeeService.checkUserName(string);
+	public List<Role> getAllRoles() {
+		
+		return roleService.getAllRoles();
 	}
-	
+
+	/*@Override
+	public void createEmployee() {
+		employeeService.
+		
+	}
+	*/
 	
 	
 }

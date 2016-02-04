@@ -4,19 +4,17 @@ package edu.mum.scrum.domain;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -25,12 +23,12 @@ public class Sprint {
 	@GeneratedValue
 	private long sprintId;
 	
-
+	@NotEmpty(message="can not be Empty")
 	private String sprintName;
 	
-	
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
-	
+	@Temporal(TemporalType.DATE)
 	private Date endDate;
 	
 	

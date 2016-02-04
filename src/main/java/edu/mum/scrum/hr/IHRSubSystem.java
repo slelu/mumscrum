@@ -3,22 +3,22 @@ package edu.mum.scrum.hr;
 import java.util.List;
 
 import edu.mum.scrum.domain.Employee;
+import edu.mum.scrum.domain.Role;
 
 
 
 public interface IHRSubSystem {
 	
 	void saveEmployee(Employee employee);
-	Employee getEmployee(Long id);
-	void deleteEmployeeById(Long id);
+	Employee getEmployeeById(Long id);
 	List <Employee> getAllEmployees();
 	List<Employee> getAvailableDev();
 	List<Employee> getAvailableTesters();
-	void disableEmployee(Employee employee);
 	void updateEmployee(Employee employee);
 	Employee getEmployeeByName(String name);
 	Employee findByUsername(String username);
-	boolean checkUserName(String string);
+	List<Role> getAllRoles();
+	/*void createEmployee();*/
 
 }
 

@@ -23,10 +23,10 @@ public class RoleServiceImpl implements RoleService{
 		return roleRepository.findAll();
 	}
 
-	@Override
+	/*@Override
 	public void saveRole(Role role) {
 		roleRepository.save(role);
-	}
+	}*/
 
 	@Override
 	public Role findByRoleName(String roleName) {

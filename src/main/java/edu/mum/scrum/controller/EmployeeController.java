@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.mum.scrum.domain.Employee;
 import edu.mum.scrum.hr.IHRSubSystem;
+import edu.mum.scrum.service.EmployeeService;
 import edu.mum.scrum.service.RoleService;
 
 
@@ -31,19 +32,24 @@ public class EmployeeController {
 	@Autowired
 	IHRSubSystem subSystemFacade;
 	
+	@Autowired
+	EmployeeService employeeService;
+	
 	@Autowired 
 	private RoleService roleService;
 	
 	BCryptPasswordEncoder en = new BCryptPasswordEncoder();
 	
 	/**
-	 * Simply selects the home view to render by returning its name.
+	 * Returns the Employee create page
 	 */
 	@RequestMapping(value = "/createEmployee", method = RequestMethod.GET)
 	public String createEmployee(@ModelAttribute("employee") Employee employee, Model model) {
 		return "employee";
 	}
-	
+	/**
+	 * Saves Employee
+	 */
 	@RequestMapping(value = "/createEmployee", method = RequestMethod.POST)
 	public String saveEmployee(@Valid @ModelAttribute("employee") Employee employee,BindingResult result,
 			@RequestParam("employeeId") Long id,Model model){
@@ -52,7 +58,7 @@ public class EmployeeController {
 			return "employee";
 		}
 		if(id==null){
-		if(!subSystemFacade.checkUserName(employee.getUsername())){
+		if(!employeeService.checkUserName(employee.getUsername())){
 			model.addAttribute("message","Username already Exists! ");
 			return "employee";
 		}
@@ -64,10 +70,7 @@ public class EmployeeController {
 		
 		employee.setPassword(en.encode(employee.getPassword()));
 		
-		
-		System.out.println("----------hr"+employee.getPassword());
-		
-		subSystemFacade.saveEmployee(employee);
+		employeeService.saveEmployee(employee);
 	
 		return "redirect:/employeeList";
 	}
@@ -75,23 +78,29 @@ public class EmployeeController {
 	@RequestMapping(value = "/editEmployee", method=RequestMethod.GET)
 	public String editEmployee(Employee employee ,Model model,@RequestParam("employeeId") Long id) {
 		
-		model.addAttribute("employee", subSystemFacade.getEmployee(id));	
+		model.addAttribute("employee", employeeService.getEmployeeById(id));	
 		return "employee";
 	}
 	
+	/**
+	 * displays all the employees
+	 */
+	
 	@RequestMapping(value="/employeeList", method=RequestMethod.GET)
-	public String getAllSprint(Model model) {
-		model.addAttribute("employees",subSystemFacade.getAllEmployees());
+	public String getAllEmployee(Model model) {
+		model.addAttribute("employees",employeeService.getAllEmployees());
 		
 		return "employeeList";
 	}
+	/**
+	 * deletes a selected employee
+	 */
 	
 	@RequestMapping(value = "/deleteEmployee/{id}", method=RequestMethod.GET)
 	public String deleteEmployee(@PathVariable("id") Long id) {
-		Employee employee=subSystemFacade.getEmployee(id);
-		System.out.println(employee.getFirstname());
-		employee.setEnabled(false);	
-		subSystemFacade.disableEmployee(employee);	
+		
+		Employee employee=employeeService.getEmployeeById(id);
+		employeeService.disableEmployee(employee);	
 		
 		return "redirect:/employeeList";
 	}
@@ -107,7 +116,7 @@ public class EmployeeController {
 	public String updateProfile(Employee employee,@RequestParam("id") Long id
 			,Model model) {
 		
-		model.addAttribute("employee", subSystemFacade.getEmployee(id));	
+		model.addAttribute("employee", subSystemFacade.getEmployeeById(id));	
 		return "updateProfile";
 	}
 	
@@ -121,7 +130,7 @@ public class EmployeeController {
 			model.addAttribute("message", "Passwords don't much!");
 			return "updateProfile";
 		}
-		employee.setRoles(subSystemFacade.getEmployee(id).getRoles());	
+		employee.setRoles(subSystemFacade.getEmployeeById(id).getRoles());	
 		employee.setPassword(en.encode(employee.getPassword()));
 		System.out.println("----------------updated"+employee.getPassword());
 		subSystemFacade.updateEmployee(employee);	

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.mum.scrum.domain.Employee;
+import edu.mum.scrum.domain.Sprint;
 import edu.mum.scrum.domain.UserStory;
 import edu.mum.scrum.repository.SprintRepository;
 import edu.mum.scrum.repository.UserStoryRepository;
@@ -64,9 +65,10 @@ public class UserStroyServiceImpl implements UserStoryService{
 	public void saveUserStoryById(long userStoryId ,String sprintName){
 		
 		UserStory userStory = this.getUserStoryById(userStoryId);
-		userStory.setSprint(sprintRepository.findBySprintName(sprintName));
-		sprintRepository.findBySprintName(sprintName).setRelease(userStory.getRelease());
-		sprintRepository.save(sprintRepository.findBySprintName(sprintName));
+		Sprint  sprint=sprintRepository.findBySprintName(sprintName);
+		userStory.setSprint(sprint);
+		sprint.setRelease(userStory.getRelease());
+		sprintRepository.save(sprint);
 		userStory.setRelease(null);
 		userStoryRepository.save(userStory);
 		}

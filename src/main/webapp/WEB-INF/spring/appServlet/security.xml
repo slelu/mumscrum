@@ -20,12 +20,12 @@
 		<intercept-url pattern="/createSprint" access="hasRole('SCRUM MASTER')"/>
 		<intercept-url pattern="/viewSprint" access="hasRole('SCRUM MASTER')"/>
 		<intercept-url pattern="/editSprint" access="hasRole('SCRUM MASTER')"/>
-		<intercept-url pattern="/createUserStory" access="hasRole('SCRUM MASTE')"/>
-		<intercept-url pattern="/editUserStory" access="hasRole('SCRUM MASTE')"/>
-		<intercept-url pattern="/deleteUserStory" access="hasRole('SCRUM MASTE')"/>
-		<intercept-url pattern="/viewUserStory" access="hasRole('SCRUM MASTE')"/>
-		<intercept-url pattern="/assignUserStory" access="hasRole('SCRUM MASTE')"/>
-		<intercept-url pattern="/addToSprint" access="hasRole('SCRUM MASTE')"/>
+		<intercept-url pattern="/createUserStory" access="hasRole('SCRUM MASTER')"/>
+		<intercept-url pattern="/editUserStory" access="hasRole('SCRUM MASTER')"/>
+		<intercept-url pattern="/deleteUserStory" access="hasRole('SCRUM MASTER')"/>
+		<intercept-url pattern="/viewUserStory" access="hasRole('SCRUM MASTER')"/>
+		<intercept-url pattern="/assignUserStory" access="hasRole('SCRUM MASTER')"/>
+		<intercept-url pattern="/addToSprint" access="hasRole('SCRUM MASTER')"/>
 		<intercept-url pattern="/developerUserStoryList" access="hasRole('DEVELOPER')"/>
 		<intercept-url pattern="/developerEstimate" access="hasRole('DEVELOPER')"/>
 		<intercept-url pattern="/developerEstimatedUserStoryLis" access="hasRole('DEVELOPER')"/>
