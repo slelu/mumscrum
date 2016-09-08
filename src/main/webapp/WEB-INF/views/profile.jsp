@@ -31,7 +31,7 @@
 						<a href ='<spring:url value="/updateProfile?id=${employee.employeeId}"/>'>
 							<button class="btn btn-primary btn-xs">
 								<span class="glyphicon glyphicon-pencil"></span>
-								UPDATE
+								EDIT
 							</button>
 							</a>
 					</tr>

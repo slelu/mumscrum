@@ -127,6 +127,7 @@ public class UserStoryController {
 	}
 	
 	/*display User Stories not added to sprint*/
+	
 	@RequestMapping(value="/addToSprint" ,method=RequestMethod.GET)
 	public String addToSprint(@ModelAttribute("userStory")UserStory userStory,Model model){
 		

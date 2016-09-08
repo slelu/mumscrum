@@ -132,8 +132,7 @@ public class EmployeeController {
 		}
 		employee.setRoles(subSystemFacade.getEmployeeById(id).getRoles());	
 		employee.setPassword(en.encode(employee.getPassword()));
-		System.out.println("----------------updated"+employee.getPassword());
-		subSystemFacade.updateEmployee(employee);	
+		subSystemFacade.updateProfile(employee);	
 		return "redirect:/viewProfile";
 	}
 	

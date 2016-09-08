@@ -14,7 +14,7 @@ public interface IHRSubSystem {
 	List <Employee> getAllEmployees();
 	List<Employee> getAvailableDev();
 	List<Employee> getAvailableTesters();
-	void updateEmployee(Employee employee);
+	void updateProfile(Employee employee);
 	Employee getEmployeeByName(String name);
 	Employee findByUsername(String username);
 	List<Role> getAllRoles();

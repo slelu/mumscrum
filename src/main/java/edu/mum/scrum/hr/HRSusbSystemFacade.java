@@ -53,7 +53,7 @@ public class HRSusbSystemFacade implements IHRSubSystem{
 	}
 
 	@Override
-	public void updateEmployee(Employee employee) {
+	public void updateProfile(Employee employee) {
 		employeeService.updateEmployee(employee);
 	}
 
